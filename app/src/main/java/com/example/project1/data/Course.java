@@ -7,12 +7,12 @@ import java.util.List;
 /**
  * An object representing a class entered by the user.
  */
-public class Class {
+public class Course {
     private String name, time, instructor, section;
     private String location, roomNumber;
     private List<DayOfWeek> days = new ArrayList<>();
 
-    public Class(String name, String time, String instructor, String section, String location, String roomNumber, List<DayOfWeek> days) {
+    public Course(String name, String time, String instructor, String section, String location, String roomNumber, List<DayOfWeek> days) {
         this.name = name;
         this.time = time;
         this.instructor = instructor;
