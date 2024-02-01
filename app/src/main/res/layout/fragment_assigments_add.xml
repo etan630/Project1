@@ -1,67 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout4"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="340dp"
+    android:layout_height="470dp"
+    android:layout_gravity="center"
+    android:background="@color/popup_color"
+    android:orientation="vertical"
     tools:context=".AssigmentsAddFragment">
-
-    <EditText
-        android:id="@+id/assignment_input"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/assignment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/class_dropdown" />
-
-    <Spinner
-        android:id="@+id/class_dropdown"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_back3" />
 
     <Button
         android:id="@+id/btn_back3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="start"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="<"
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btn_add3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Due_date_input" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/tv_course"
+            android:layout_width="68dp"
+            android:layout_height="27dp"
+            android:text="@string/course"
+            android:textSize="20sp"
+            android:layout_marginEnd="8dp"/>
+
+        <Spinner
+            android:id="@+id/class_dropdown"
+            android:layout_width="200dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/assignment_input"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="@string/assignment"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/Due_date_input"
-        android:layout_width="320dp"
+        android:layout_width="280dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:ems="10"
-        android:inputType="date"
-        android:text="@string/due_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignment_input" />
+        android:hint="@string/due_date"
+        android:inputType="date" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_add3"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:text="@string/add" />
+
+</LinearLayout>
