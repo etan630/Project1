@@ -9,14 +9,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-        <Button
-            android:id="@+id/add_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FAE9E9"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:text="Add Class" />
+<!--        <Button-->
+<!--            android:id="@+id/add_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#FAE9E9"-->
+<!--            android:fontFamily="sans-serif-black"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Add Class" />-->
 
         <ListView
             android:id="@+id/class_list"
@@ -24,13 +24,13 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/to_Assignments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FAE9E9"
-            android:fontFamily="sans-serif-black"
-            android:text="Assignments" />
+<!--        <Button-->
+<!--            android:id="@+id/to_Assignments"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#FAE9E9"-->
+<!--            android:fontFamily="sans-serif-black"-->
+<!--            android:text="Assignments" />-->
 
 </LinearLayout>
 
