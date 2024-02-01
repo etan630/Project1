@@ -10,6 +10,7 @@
     <!-- action titles -->
     <string name="close">X</string>
     <string name="add">Add</string>
+    <string name="back">&lt;</string>
 
     <!-- variable titles -->
     <string name="exam_name">Exam Name</string>

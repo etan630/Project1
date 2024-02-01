@@ -18,17 +18,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:gravity="center"
-        android:text="<"
+        android:text="@string/back"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/text_task_input"
         android:layout_width="280dp"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
         android:layout_marginTop="140dp"
         android:layout_gravity="center"
         android:ems="10"
         android:hint="@string/task"
+        android:autofillHints="@string/task"
         android:inputType="text" />
 
     <Button
