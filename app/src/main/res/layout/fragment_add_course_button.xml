@@ -17,8 +17,8 @@
         android:ems="10"
         android:layout_gravity="center"
         android:hint="@string/class_name"
-        android:autofillhints="@string/class_name"
-        android:inputTyp="text"/>
+        android:autofillHints="@string/class_name"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/instructor_input"
