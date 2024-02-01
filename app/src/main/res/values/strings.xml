@@ -20,4 +20,7 @@
     <string name="exam_date">Exam Date</string>
     <string name="location">Location</string>
     <string name="task">Task</string>
+    <string name="class_name">Class Name</string>
+    <string name="instructor_input">Instructor</string>
+    <string name="time_class_input">Time</string>
 </resources>
