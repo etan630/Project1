@@ -23,4 +23,6 @@
     <string name="class_name">Class Name</string>
     <string name="instructor_input">Instructor</string>
     <string name="time_class_input">Time</string>
+    <string name="courses">Courses</string>
+    <string name="list">List</string>
 </resources>

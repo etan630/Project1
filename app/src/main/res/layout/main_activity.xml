@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.NoActionBar">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -34,8 +35,8 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_fragment"
         android:layout_width="fill_parent"
-        android:layout_height="64dp"
-        app:itemIconSize="48dp"
+        android:layout_height="72dp"
+        app:itemIconSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
