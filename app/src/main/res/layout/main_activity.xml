@@ -17,15 +17,14 @@
 
     </androidx.fragment.app.FragmentContainerView>
 
-    <androidx.fragment.app.FragmentContainerView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_fragment"
-        android:name="com.example.project1.NavFragment"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
+        app:itemIconSize="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_nav"
-        tools:layout_constraintBottom_toBottomOf="parent" />
+        app:menu="@menu/navmenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

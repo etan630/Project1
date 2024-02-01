@@ -1,14 +1,20 @@
 package com.example.project1;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
+    NavController navController;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,5 +22,25 @@ public class MainActivity extends AppCompatActivity {
         AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
         setContentView(R.layout.main_activity);
+
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        assert navHostFragment != null;
+        this.navController = navHostFragment.getNavController();
+
+        BottomNavigationView bottomNav = findViewById(R.id.nav_fragment);
+        bottomNav.setOnItemSelectedListener(navListener);
     }
+
+    private final NavigationBarView.OnItemSelectedListener navListener = item -> {
+        int itemId = item.getItemId();
+        if (itemId == R.id.courses) {
+            // nav to courses
+            navController.navigate(R.id.coursesFragment);
+        } else {
+            // nav to list
+            navController.navigate(R.id.listFragment);
+        }
+        return true;
+    };
 }
