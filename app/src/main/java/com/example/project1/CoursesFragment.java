@@ -7,6 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.project1.data.Course;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,48 +26,57 @@ public class CoursesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //private static final String ARG_PARAM1 = "param1";
+    //private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText class_name_input;
+    private EditText instructor_input;
+    private EditText time_input;
+    private ListView class_list;
+    private ArrayList<Course> courseList;
+    private ArrayAdapter<Course> coursesAdapter;
 
     public CoursesFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment courses.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CoursesFragment newInstance(String param1, String param2) {
-        CoursesFragment fragment = new CoursesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_courses, container, false);
+        View view = inflater.inflate(R.layout.fragment_courses, container, false);
+
+        class_name_input = view.findViewById(R.id.class_name_input);
+        instructor_input = view.findViewById(R.id.instructor_input);
+        time_input = view.findViewById(R.id.time_input);
+        class_list = view.findViewById(R.id.class_list);
+
+        courses = new ArrayList<>();
+        coursesAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, courses);
+        class_list.setAdapter(coursesAdapter);
+
+        add_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String className = class_name_input.getText().toString();
+                String instructor = instructor_input.getText().toString();
+                String time = time_input.getText().toString();
+
+                if (!className.isEmpty() && !instructor.isEmpty() && !time.isEmpty()) {
+                    Course newCourse = new Course(className, instructor, time);
+                    courses.add(newCourse);
+                    coursesAdapter.notifyDataSetChanged();
+
+                    class_name_input.setText("");
+                    instructor_input.setText("");
+                    time_input.setText("");
+                } else {
+                    Toast.makeText(getActivity(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
 }

@@ -48,10 +48,10 @@
         android:orientation="horizontal" >
         <Button
             android:id="@+id/back_button"
-            android:layout_width="50dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:text="something other than less than" /> <!-- less than not allowed !-->
+            android:text="Back" /> <!-- less than not allowed !-->
         <Button
             android:id="@+id/commit"
             android:layout_width="wrap_content"
