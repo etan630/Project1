@@ -34,6 +34,7 @@ public class AppViewModel extends ViewModel {
     }
 
     public void addCourse(Course course) {
+        System.out.println("ADDING COURSE " + course.getName());
         addToLiveDataList(courses, course);
     }
 

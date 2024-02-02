@@ -8,10 +8,10 @@
     android:layout_gravity="center"
     android:background="@color/popup_color"
     android:orientation="vertical"
-    tools:context=".AssigmentsAddFragment">
+    tools:context=".AddAssignmentFragment">
 
     <Button
-        android:id="@+id/btn_back3"
+        android:id="@+id/btn_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
