@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +28,12 @@ public class ListAddButtonFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_list_add_button);
+        //setContentView(R.layout.fragment_list_add_button);
 
         button_toDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void OnClick(View view) {
-                Intent i = new Intent()
+                Intent i = new Intent();
             }
         });
     }
@@ -40,6 +42,42 @@ public class ListAddButtonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_add_button, container, false);
+        // return inflater.inflate(R.layout.fragment_list_add_button, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_add_button, container, false);
+
+        Button todoButton = view.findViewById(R.id.btn_add_todo);
+        Button assignmentButton = view.findViewById(R.id.btn_add_assignments);
+        Button examButton = view.findViewById(R.id.btn_add_exams);
+
+        todoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPopupFragment(new ToDoAddFragment());
+            }
+        });
+
+        assignmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPopupFragment(new AssigmentsAddFragment());
+            }
+        });
+
+        examButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPopupFragment(new AddExamFragment());
+            }
+        });
+
+        return view;
+    }
+
+    private void openPopupFragment(Fragment fragment) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
