@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.project1.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +30,19 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
         Course course = courses.get(position);
 
         // If the convertView is null (i.e., it hasn't been created yet), inflate it from the XML layout file
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.course_item, parent, false);
-        }
-
-        // Find the TextViews in the course_item layout
-        TextView courseNameTextView = convertView.findViewById(R.id.course_name);
-        TextView instructorNameTextView = convertView.findViewById(R.id.instructor_name);
-        TextView timeTextView = convertView.findViewById(R.id.time_input);
-
-        // Set the text of the TextViews to the corresponding values from curr course object
-        courseNameTextView.setText(course.getClassName());
-        instructorNameTextView.setText(course.getInstructor());
-        timeTextView.setText(course.getTime());
+//        if (convertView == null) {
+//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.course_item, parent, false);
+//        }
+//
+//        // Find the TextViews in the course_item layout
+//        TextView courseNameTextView = convertView.findViewById(R.id.course_name);
+//        TextView instructorNameTextView = convertView.findViewById(R.id.instructor_name);
+//        TextView timeTextView = convertView.findViewById(R.id.time_input);
+//
+//        // Set the text of the TextViews to the corresponding values from curr course object
+//        courseNameTextView.setText(course.getName());
+//        instructorNameTextView.setText(course.getInstructor());
+//        timeTextView.setText(course.getTime());
 
         // Return the updated convertView
         return convertView;

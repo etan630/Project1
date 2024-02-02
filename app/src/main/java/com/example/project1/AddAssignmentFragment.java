@@ -9,12 +9,12 @@ import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.Navigation;
 
-public class AddExamFragment extends DialogFragment {
+public class AddAssignmentFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_exam, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_assignment, container, false);
 
         Button backButton = view.findViewById(R.id.btn_back);
         backButton.setOnClickListener(v -> {

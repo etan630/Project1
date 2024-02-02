@@ -23,4 +23,21 @@
             android:id="@+id/action_listFragment_to_coursesFragment"
             app:destination="@id/coursesFragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/addCourseFragment"
+        android:name="com.example.project1.AddCourseFragment"
+        android:label="AddCourseFragment" />
+    <dialog
+        android:id="@+id/addAssignmentFragment"
+        android:name="com.example.project1.AddAssignmentFragment"
+        android:label="AddAssignmentFragment" />
+    <dialog
+        android:id="@+id/addExamFragment"
+        android:name="com.example.project1.AddExamFragment"
+        android:label="AddExamFragment" />
+    <dialog
+        android:id="@+id/addTodoFragment"
+        android:name="com.example.project1.AddTodoFragment"
+        android:label="AddTodoFragment" />
 </navigation>

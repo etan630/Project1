@@ -3,62 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:orientation="vertical"
     android:background="@color/popup_color"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/class_name_input"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="70dp"
-        android:ems="10"
         android:layout_gravity="center"
-        android:hint="@string/class_name"
+        android:layout_marginTop="70dp"
         android:autofillHints="@string/class_name"
-        android:inputType="text"/>
+        android:ems="10"
+        android:hint="@string/class_name"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/instructor_input"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
         android:layout_gravity="center"
-        android:hint="@string/instructor_input"
+        android:layout_marginTop="10dp"
         android:autofillHints="@string/instructor_input"
+        android:ems="10"
+        android:hint="@string/instructor_input"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/time_input"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:autofillHints="@string/time_class_input"
+        android:ems="10"
+        android:hint="@string/time_class_input"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/section_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="Section" />
+
+    <EditText
+        android:id="@+id/building_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        android:hint="@string/time_class_input"
-        android:autofillHints="@string/time_class_input"
-        android:inputType="time" />
-    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Building" />
+
+    <EditText
+        android:id="@+id/room_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Room" />
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:orientation="horizontal" >
+        android:layout_marginTop="70dp">
+
         <Button
-            android:id="@+id/back_button"
+            android:id="@+id/btn_back"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:text="Back" /> <!-- less than not allowed !-->
+            android:text="Back"
+            android:textSize="16sp" /> <!-- less than not allowed !-->
         <Button
-            android:id="@+id/commit"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="193dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginRight="7dp"
-            android:text="add" />
-    </LinearLayout>
+            android:text="add"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
 </LinearLayout>

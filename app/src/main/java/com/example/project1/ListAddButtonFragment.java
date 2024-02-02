@@ -1,22 +1,15 @@
 package com.example.project1;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListAddButtonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 public class ListAddButtonFragment extends Fragment {
     Button button_toDo;
 
@@ -30,12 +23,12 @@ public class ListAddButtonFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.fragment_list_add_button);
 
-        button_toDo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void OnClick(View view) {
-                Intent i = new Intent();
-            }
-        });
+//        button_toDo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void OnClick(View view) {
+//                Intent i = new Intent();
+//            }
+//        });
     }
 
     @Override
@@ -52,14 +45,14 @@ public class ListAddButtonFragment extends Fragment {
         todoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPopupFragment(new ToDoAddFragment());
+                openPopupFragment(new AddTodoFragment());
             }
         });
 
         assignmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPopupFragment(new AssigmentsAddFragment());
+                openPopupFragment(new AddAssignmentFragment());
             }
         });
 

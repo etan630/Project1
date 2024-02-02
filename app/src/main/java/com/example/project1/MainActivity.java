@@ -1,41 +1,60 @@
 package com.example.project1;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.PopupMenu;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.project1.viewmodel.AppViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
-    NavController navController;
+    private static final List<Integer> SHOW_NAVBAR_ON =
+            Arrays.asList(R.id.coursesFragment, R.id.listFragment);
+
+    private NavController navController;
+
+    private FloatingActionButton addButton;
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
+//        AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
         setContentView(R.layout.main_activity);
 
+        // get navcontroller
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         assert navHostFragment != null;
         this.navController = navHostFragment.getNavController();
 
-        BottomNavigationView bottomNav = findViewById(R.id.nav_fragment);
-        bottomNav.setOnItemSelectedListener(navListener);
+        // activate navigation bar
+        this.bottomNav = findViewById(R.id.nav_fragment);
+        bottomNav.setOnItemSelectedListener(navBarListener);
+
+        // activate add button
+        this.addButton = findViewById(R.id.addButton);
+        addButton.setOnClickListener(addButtonListener);
+
+        // only show navbar & plus button on some screens
+//        this.navController.addOnDestinationChangedListener(destChangedListener);
     }
 
-    private final NavigationBarView.OnItemSelectedListener navListener = item -> {
+    private final NavigationBarView.OnItemSelectedListener navBarListener = item -> {
         int itemId = item.getItemId();
         if (itemId == R.id.courses) {
             // nav to courses
@@ -46,4 +65,38 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     };
+
+    private final View.OnClickListener addButtonListener = v -> {
+        PopupMenu popupMenu = new PopupMenu(MainActivity.this, addButton, Gravity.TOP);
+
+        popupMenu.getMenuInflater().inflate(R.menu.addmenu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            int navTo = R.id.addCourseFragment;
+            if (menuItem.getItemId() == R.id.item_addcourse) {
+                navTo = R.id.addCourseFragment;
+            } else if (menuItem.getItemId() == R.id.item_addassignment) {
+                navTo = R.id.addAssignmentFragment;
+            } else if (menuItem.getItemId() == R.id.item_addexam) {
+                navTo = R.id.addExamFragment;
+            } else if (menuItem.getItemId() == R.id.item_addtodo) {
+                navTo = R.id.addTodoFragment;
+            }
+
+            navController.navigate(navTo);
+            return true;
+        });
+
+        popupMenu.show();
+    };
+
+    private final NavController.OnDestinationChangedListener destChangedListener =
+            (NavController controller, NavDestination dest, Bundle args) -> {
+                if (SHOW_NAVBAR_ON.contains(dest.getId())) {
+                    this.bottomNav.setVisibility(View.VISIBLE);
+                    this.addButton.setVisibility(View.VISIBLE);
+                } else {
+                    this.bottomNav.setVisibility(View.GONE);
+                    this.addButton.setVisibility(View.GONE);
+                }
+            };
 }

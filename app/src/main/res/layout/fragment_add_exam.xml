@@ -11,7 +11,7 @@
     tools:context=".AddExamFragment">
 
     <Button
-        android:id="@+id/btn_back4"
+        android:id="@+id/btn_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
