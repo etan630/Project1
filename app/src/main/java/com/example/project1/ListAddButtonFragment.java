@@ -19,6 +19,7 @@ import android.widget.Button;
  */
 public class ListAddButtonFragment extends Fragment {
     Button button_toDo;
+    Button btn_back;
 
 
     public ListAddButtonFragment() {
@@ -28,14 +29,23 @@ public class ListAddButtonFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.fragment_list_add_button);
+        setContentView(R.layout.fragment_list_add_button);
 
-        button_toDo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void OnClick(View view) {
-                Intent i = new Intent();
+        btn_back = findViewById(R.id.btn_back);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(ListAddButtonFragment.this, ToDoAddFragment.class);
+                startActivity(intent);
             }
         });
+
+        //button_toDo.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void OnClick(View view) {
+                //Intent i = new Intent();
+            //}
+        //});
     }
 
     @Override
