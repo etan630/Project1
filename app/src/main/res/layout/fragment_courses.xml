@@ -1,36 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EEFFEA"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-<!--        <Button-->
-<!--            android:id="@+id/add_button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="#FAE9E9"-->
-<!--            android:fontFamily="sans-serif-black"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Add Class" />-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/class_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time: "
+                    android:textSize="16sp" />
 
-<!--        <Button-->
-<!--            android:id="@+id/to_Assignments"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="#FAE9E9"-->
-<!--            android:fontFamily="sans-serif-black"-->
-<!--            android:text="Assignments" />-->
+                <TextView
+                    android:id="@+id/days_of_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Days of Week: "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/professor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Instructor: "
+                    android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/class_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Section: "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/building"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Building: "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/room_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room: "
+                    android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/edit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_edit" />
+
+                <ImageButton
+                    android:id="@+id/delete_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_delete" />
+
+        </LinearLayout>
 
 </LinearLayout>
-
