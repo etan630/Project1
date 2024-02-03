@@ -3,6 +3,7 @@ package com.example.project1;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +36,10 @@ public class ListFragment extends Fragment {
     List<ToDoInput> todoList = new ArrayList<ToDoInput>();
     List<AssignmentInput> assignmentList = new ArrayList<AssignmentInput>();
     List<ExamInput> examList = new ArrayList<ExamInput>();
+
+    private RecyclerView recyclerview;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     public ListFragment() {
         // Required empty public constructor
@@ -72,6 +77,8 @@ public class ListFragment extends Fragment {
         fillExamList();
         Log.d(TAG, "onCreate: " + examList.toString());
     }
+
+    recyclerView = findViewById(R.id.)
 
     private void fillTodoList() {
         ToDoInput td1 = new ToDoInput("pick up package");
