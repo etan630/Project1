@@ -18,7 +18,7 @@
         android:id="@+id/listFragment"
         android:name="com.example.project1.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_coursesFragment"
             app:destination="@id/coursesFragment" />
@@ -27,45 +27,56 @@
     <fragment
         android:id="@+id/addAssignmentFragment"
         android:name="com.example.project1.AddAssignmentFragment"
-        android:label="AddAssignmentFragment" >
+        android:label="AddAssignmentFragment">
         <argument
             android:name="assignmentId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <action
-        android:id="@+id/action_global_addCourseFragment"
+        android:id="@+id/action_global_addAssignmentFragment"
         app:destination="@id/addAssignmentFragment"
         app:enterAnim="@android:anim/slide_in_left" />
 
     <fragment
         android:id="@+id/addCourseFragment"
         android:name="com.example.project1.AddCourseFragment"
-        android:label="AddCourseFragment" >
+        android:label="AddCourseFragment">
         <argument
             android:name="courseId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
+    <action
+        android:id="@+id/action_global_addCourseFragment"
+        app:destination="@id/addCourseFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
 
     <fragment
         android:id="@+id/addExamFragment"
         android:name="com.example.project1.AddExamFragment"
-        android:label="addExamFragment" >
+        android:label="addExamFragment">
         <argument
             android:name="examId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
+    <action
+        android:id="@+id/action_global_addExamFragment"
+        app:destination="@id/addExamFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
 
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="com.example.project1.AddTodoFragment"
-        android:label="AddTodoFragment" >
+        android:label="AddTodoFragment">
         <argument
-            android:name="courseId"
-            app:argType="integer"
-            android:defaultValue="-1" />
-    </fragment><action android:id="@+id/action_global_addCourseFragment2" app:destination="@id/addCourseFragment"/><action android:id="@+id/action_global_addExamFragment" app:destination="@id/addExamFragment"/>
-    <action android:id="@+id/action_global_addTodoFragment" app:destination="@id/addTodoFragment" />
+            android:name="todoId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_addTodoFragment"
+        app:destination="@id/addTodoFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
 </navigation>

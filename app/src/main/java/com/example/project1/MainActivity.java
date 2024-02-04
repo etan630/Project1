@@ -71,18 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
         popupMenu.getMenuInflater().inflate(R.menu.addmenu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(menuItem -> {
-            int navTo = R.id.addCourseFragment;
             if (menuItem.getItemId() == R.id.item_addcourse) {
-                navTo = R.id.addCourseFragment;
+                NavGraphDirections.ActionGlobalAddCourseFragment action = NavGraphDirections.actionGlobalAddCourseFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addassignment) {
-                navTo = R.id.addAssignmentFragment;
+                NavGraphDirections.ActionGlobalAddAssignmentFragment action = NavGraphDirections.actionGlobalAddAssignmentFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addexam) {
-                navTo = R.id.addExamFragment;
+                NavGraphDirections.ActionGlobalAddExamFragment action = NavGraphDirections.actionGlobalAddExamFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addtodo) {
-                navTo = R.id.addTodoFragment;
+                NavGraphDirections.ActionGlobalAddTodoFragment action = NavGraphDirections.actionGlobalAddTodoFragment();
+                navController.navigate(action);
             }
 
-            navController.navigate(navTo);
             return true;
         });
 
