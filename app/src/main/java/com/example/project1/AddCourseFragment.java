@@ -28,21 +28,18 @@ public class AddCourseFragment extends AbstractAddFragment {
             EditText buildingInput = thisFragment.findViewById(R.id.building_input);
             EditText roomInput = thisFragment.findViewById(R.id.room_input);
 
-            Button addButton = thisFragment.findViewById(R.id.btn_add);
-            addButton.setOnClickListener(v -> {
-                AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
-                viewModel.addCourse(
-                        new Course(
-                                classNameInput.getText().toString(),
-                                timeInput.getText().toString(),
-                                instructorInput.getText().toString(),
-                                sectionInput.getText().toString(),
-                                buildingInput.getText().toString(),
-                                roomInput.getText().toString(),
-                                new ArrayList<>() // TODO: input for days of week
-                        )
-                );
-            });
+            AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
+            viewModel.addCourse(
+                    new Course(
+                            classNameInput.getText().toString(),
+                            timeInput.getText().toString(),
+                            instructorInput.getText().toString(),
+                            sectionInput.getText().toString(),
+                            buildingInput.getText().toString(),
+                            roomInput.getText().toString(),
+                            new ArrayList<>() // TODO: input for days of week
+                    )
+            );
 
             navController.navigate(R.id.coursesFragment);
         };

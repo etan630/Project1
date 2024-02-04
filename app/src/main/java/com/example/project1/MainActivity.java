@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(addButtonListener);
 
         // only show navbar & plus button on some screens
-//        this.navController.addOnDestinationChangedListener(destChangedListener);
+        this.navController.addOnDestinationChangedListener(destChangedListener);
     }
 
     private final NavigationBarView.OnItemSelectedListener navBarListener = item -> {
