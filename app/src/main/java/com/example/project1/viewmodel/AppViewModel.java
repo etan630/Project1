@@ -26,6 +26,12 @@ public class AppViewModel extends ViewModel {
         return list;
     }
 
+    public AppViewModel() {
+        super();
+
+        initWithDummyData();
+    }
+
     public void initWithDummyData() {
         Course math = new Course("math", "now", "pedro", "z", "gt"
                 , "404", new ArrayList<>());

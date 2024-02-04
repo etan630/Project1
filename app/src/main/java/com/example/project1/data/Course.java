@@ -1,5 +1,7 @@
 package com.example.project1.data;
 
+import androidx.annotation.NonNull;
+
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +50,11 @@ public class Course {
 
     public List<DayOfWeek> getDays() {
         return days;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }
