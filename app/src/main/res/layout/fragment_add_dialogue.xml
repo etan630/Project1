@@ -2,42 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
+    android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/popup_color"
     android:orientation="vertical"
-    tools:context=".AddTodoFragment">
+    tools:context=".AddExamFragment">
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/back"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/text_task_input"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="140dp"
-        android:layout_gravity="center"
-        android:ems="10"
-        android:hint="@string/task"
-        android:autofillHints="@string/task"
-        android:inputType="text" />
+    <FrameLayout
+        android:id="@+id/form_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_add2"
+        android:id="@+id/btn_add"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
         android:layout_gravity="end"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:text="@string/add" />
 </LinearLayout>

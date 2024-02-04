@@ -43,7 +43,7 @@ public class ListFragment extends Fragment {
     List<AssignmentInput> assignmentList = new ArrayList<AssignmentInput>();
     List<ExamInput> examList = new ArrayList<ExamInput>();
 
-    private RecyclerView recyclerview;
+    private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -84,7 +84,7 @@ public class ListFragment extends Fragment {
         Log.d(TAG, "onCreate: " + examList.toString());
     }
 
-    recyclerView = findViewById(R.id.)
+    recyclerView = findViewById(R.id.lv_list);
 
     private void fillTodoList() {
         ToDoInput td1 = new ToDoInput("pick up package");
