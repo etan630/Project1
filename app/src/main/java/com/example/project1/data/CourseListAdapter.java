@@ -34,27 +34,14 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
     // Override the getView method to customize the appearance of each item in the ListView
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        // Get the current course object from the list
-        Course course = courses.get(position);
-
-        // If the convertView is null (i.e., it hasn't been created yet), inflate it from the XML layout file
-//        if (convertView == null) {
-//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.course_item, parent, false);
-//        }
-//
-//        // Find the TextViews in the course_item layout
-//        TextView courseNameTextView = convertView.findViewById(R.id.course_name);
-//        TextView instructorNameTextView = convertView.findViewById(R.id.instructor_name);
-//        TextView timeTextView = convertView.findViewById(R.id.time_input);
-//
-//        // Set the text of the TextViews to the corresponding values from curr course object
-//        courseNameTextView.setText(course.getName());
-//        instructorNameTextView.setText(course.getInstructor());
-//        timeTextView.setText(course.getTime());
+        // Inflate the course_list_item layout if convertView is null
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_courses, parent, false);
+        }
 
         //click listeners for delete
         Button deleteButton = convertView.findViewById(R.id.delete_button);
-        deleteButton.setOnClickListener(v -> showDeleteConfirmation(course));
+        deleteButton.setOnClickListener(v -> showDeleteConfirmation(courses.get(position)));
 
         // Return the updated convertView
         return convertView;
