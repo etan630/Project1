@@ -24,20 +24,44 @@
             app:destination="@id/coursesFragment" />
     </fragment>
 
-    <dialog
-        android:id="@+id/addCourseFragment"
-        android:name="com.example.project1.AddCourseFragment"
-        android:label="AddCourseFragment" />
-    <dialog
+    <fragment
         android:id="@+id/addAssignmentFragment"
         android:name="com.example.project1.AddAssignmentFragment"
-        android:label="AddAssignmentFragment" />
-    <dialog
+        android:label="AddAssignmentFragment" >
+        <argument
+            android:name="assignmentId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <action android:id="@+id/action_global_addCourseFragment" app:destination="@id/addAssignmentFragment" />
+
+    <fragment
+        android:id="@+id/addCourseFragment"
+        android:name="com.example.project1.AddCourseFragment"
+        android:label="AddCourseFragment" >
+        <argument
+            android:name="courseId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
         android:id="@+id/addExamFragment"
         android:name="com.example.project1.AddExamFragment"
-        android:label="AddExamFragment" />
-    <dialog
+        android:label="addExamFragment" >
+        <argument
+            android:name="examId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
         android:id="@+id/addTodoFragment"
         android:name="com.example.project1.AddTodoFragment"
-        android:label="AddTodoFragment" />
+        android:label="AddTodoFragment" >
+        <argument
+            android:name="courseId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment><action android:id="@+id/action_global_addCourseFragment2" app:destination="@id/addCourseFragment"/><action android:id="@+id/action_global_addExamFragment" app:destination="@id/addExamFragment"/><action android:id="@+id/action_global_addTodoFragment" app:destination="@id/addTodoFragment"/>
 </navigation>
