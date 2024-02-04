@@ -9,7 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.data.Course;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -19,8 +22,12 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int VIEW_TYPE_3 = 3;
 
     private List<ListItem> itemList;
+    private List<ListItem> filteredList;
 
-    // Constructor and other methods...
+    public ListItemAdapter(List<ListItem> itemList) {
+        this.itemList = itemList;
+        this.filteredList = new ArrayList<>(itemList);
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -132,5 +139,69 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             assignName.setText(assignment.getName());
             assignDue.setText(assignment.getDue().toString());
         }
+    }
+
+    public void filterByCourse(String courseName) {
+        filteredList.clear();
+
+        for (ListItem item : itemList) {
+            if (item instanceof Assignment || item instanceof Exam) {
+                Course associatedCourse = item.getAssociatedClass();
+                if (associatedCourse != null && associatedCourse.getName().equalsIgnoreCase(courseName)) {
+                    filteredList.add(item);
+                }
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+    public void filterByAssignment() {
+        filteredList.clear();
+
+        for (ListItem item : itemList) {
+            if (item instanceof Assignment) {
+                filteredList.add(item);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+    public void filterByTask() {
+        filteredList.clear();
+
+        for (ListItem item : itemList) {
+            if (item instanceof Todo) {
+                filteredList.add(item);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+    public void filterByExams() {
+        filteredList.clear();
+
+        for (ListItem item : itemList) {
+            if (item instanceof Exam) {
+                filteredList.add(item);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+
+    public void filterByDueDate(Date dueDate) {
+        filteredList.clear();
+
+        for (ListItem item : itemList) {
+            if (item instanceof Assignment && ((Assignment) item).getDue().equals(dueDate)) {
+                filteredList.add(item);
+            }
+        }
+
+        notifyDataSetChanged();
     }
 }
