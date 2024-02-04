@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(addButtonListener);
 
         // only show navbar & plus button on some screens
-//        this.navController.addOnDestinationChangedListener(destChangedListener);
+        this.navController.addOnDestinationChangedListener(destChangedListener);
     }
 
     private final NavigationBarView.OnItemSelectedListener navBarListener = item -> {
@@ -66,22 +66,25 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private final View.OnClickListener addButtonListener = v -> {
-        PopupMenu popupMenu = new PopupMenu(MainActivity.this, addButton, Gravity.TOP);
+        PopupMenu popupMenu = new PopupMenu(MainActivity.this, addButton,
+                Gravity.TOP | Gravity.END);
 
         popupMenu.getMenuInflater().inflate(R.menu.addmenu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(menuItem -> {
-            int navTo = R.id.addCourseFragment;
             if (menuItem.getItemId() == R.id.item_addcourse) {
-                navTo = R.id.addCourseFragment;
+                NavGraphDirections.ActionGlobalAddCourseFragment action = NavGraphDirections.actionGlobalAddCourseFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addassignment) {
-                navTo = R.id.addAssignmentFragment;
+                NavGraphDirections.ActionGlobalAddAssignmentFragment action = NavGraphDirections.actionGlobalAddAssignmentFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addexam) {
-                navTo = R.id.addExamFragment;
+                NavGraphDirections.ActionGlobalAddExamFragment action = NavGraphDirections.actionGlobalAddExamFragment();
+                navController.navigate(action);
             } else if (menuItem.getItemId() == R.id.item_addtodo) {
-                navTo = R.id.addTodoFragment;
+                NavGraphDirections.ActionGlobalAddTodoFragment action = NavGraphDirections.actionGlobalAddTodoFragment();
+                navController.navigate(action);
             }
 
-            navController.navigate(navTo);
             return true;
         });
 

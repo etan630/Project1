@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/popup_color"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,7 +13,6 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
         android:autofillHints="@string/class_name"
         android:ems="10"
         android:hint="@string/class_name"
@@ -68,27 +66,5 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Room" />
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp">
-
-        <Button
-            android:id="@+id/btn_back"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:text="Back"
-            android:textSize="16sp" /> <!-- less than not allowed !-->
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="7dp"
-            android:text="add"
-            android:textSize="16sp" />
-    </RelativeLayout>
 
 </LinearLayout>

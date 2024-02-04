@@ -6,21 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class AddAssignmentFragment extends DialogFragment {
+public class AddAssignmentFragment extends AbstractAddFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_assignment, container, false);
+    protected int getFormContent() {
+        return R.layout.add_assignment_form;
+    }
 
-        Button backButton = view.findViewById(R.id.btn_back);
-        backButton.setOnClickListener(v -> {
-            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).popBackStack();
-        });
-
-        return view;
+    @Override
+    protected View.OnClickListener onAdd(View thisFragment, NavController navController) {
+        return null;
     }
 }
