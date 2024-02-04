@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.project1.viewmodel.AppViewModel;
+import com.example.project1.viewmodel.AbstractAppViewModel;
+import com.example.project1.viewmodel.NoDBAppViewModel;
 
 /**
  * A screen with a back button, an "add" button, and a placeholder for custom
  * implementation-specific form content.
  */
 public abstract class AbstractAddFragment extends Fragment {
-    protected AppViewModel viewModel;
+    protected AbstractAppViewModel viewModel;
 
     /**
      * Gets the id of the View (typically a form with text inputs) to be inserted into this add
@@ -29,16 +30,6 @@ public abstract class AbstractAddFragment extends Fragment {
     protected int getFormContent() {
         return 0;
     }
-
-    /**
-     * Logic to be run after the form content is inflated from XML, e.g. to activate elements.
-     *
-     * @param thisFragment this fragment's view
-     */
-    protected void afterInflating(View thisFragment) {
-    }
-
-    ;
 
     /**
      * Logic to be run when the add button on the add screen is clicked.
@@ -52,7 +43,7 @@ public abstract class AbstractAddFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(getActivity()).get(AppViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(NoDBAppViewModel.class);
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_dialogue, container, false);
@@ -63,7 +54,6 @@ public abstract class AbstractAddFragment extends Fragment {
         if (getFormContent() != 0) {
             inflater.inflate(getFormContent(), view.findViewById(R.id.form_placeholder));
         }
-        afterInflating(view);
 
         return view;
     }

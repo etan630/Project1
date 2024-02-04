@@ -10,6 +10,8 @@ import java.util.List;
  * An object representing a class entered by the user.
  */
 public class Course {
+    private int id = -1; // not assigned until done so by backend
+
     private String name, time, instructor, section;
     private String location, roomNumber;
     private List<DayOfWeek> days = new ArrayList<>();
@@ -50,6 +52,14 @@ public class Course {
 
     public List<DayOfWeek> getDays() {
         return days;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @NonNull

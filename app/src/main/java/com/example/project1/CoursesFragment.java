@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project1.data.Course;
 import com.example.project1.data.CourseListAdapter;
-import com.example.project1.viewmodel.AppViewModel;
+import com.example.project1.viewmodel.NoDBAppViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class CoursesFragment extends Fragment {
     EditText roomInput;
     private ArrayList<Course> courseList;
     private ArrayAdapter<Course> coursesAdapter;
-    private AppViewModel model;
+    private NoDBAppViewModel model;
 
     public CoursesFragment() {
         // Required empty public constructor
@@ -48,8 +47,9 @@ public class CoursesFragment extends Fragment {
 
         return view;
     }
+
     public void updateCourse() {
-        model = new ViewModelProvider(this).get(AppViewModel.class);
+        model = new ViewModelProvider(this).get(NoDBAppViewModel.class);
         model.getCourses().observe(getViewLifecycleOwner(), new Observer<List<Course>>() {
             @Override
             public void onChanged(@Nullable List<Course> courses) {

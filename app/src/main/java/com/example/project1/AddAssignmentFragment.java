@@ -1,8 +1,11 @@
 package com.example.project1;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 
 import com.example.project1.ui.UiUtils;
@@ -14,8 +17,8 @@ public class AddAssignmentFragment extends AbstractAddFragment {
     }
 
     @Override
-    protected void afterInflating(View view) {
-        super.afterInflating(view);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         Spinner courseSelector = view.findViewById(R.id.class_dropdown);
         UiUtils.activateCoursesSpinner(courseSelector, viewModel.getCourses());

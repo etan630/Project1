@@ -8,6 +8,8 @@ import java.util.Date;
  * An item that can be displayed alongside others on a user's list of upcoming activities
  */
 public abstract class ListItem {
+    private int id;
+
     private String name;
     private Date due;
     private Course associatedCourse;
@@ -28,5 +30,13 @@ public abstract class ListItem {
 
     public Course getAssociatedClass() {
         return associatedCourse;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
