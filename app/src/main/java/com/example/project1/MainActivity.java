@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private final View.OnClickListener addButtonListener = v -> {
-        PopupMenu popupMenu = new PopupMenu(MainActivity.this, addButton, Gravity.TOP);
+        PopupMenu popupMenu = new PopupMenu(MainActivity.this, addButton,
+                Gravity.TOP | Gravity.END);
 
         popupMenu.getMenuInflater().inflate(R.menu.addmenu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(menuItem -> {

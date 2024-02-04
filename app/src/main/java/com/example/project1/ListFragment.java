@@ -84,7 +84,7 @@ public class ListFragment extends Fragment {
         Log.d(TAG, "onCreate: " + examList.toString());
     }
 
-    recyclerView = findViewById(R.id.)
+//    recyclerView = findViewById(R.id.)
 
     private void fillTodoList() {
         ToDoInput td1 = new ToDoInput("pick up package");
@@ -122,8 +122,8 @@ public class ListFragment extends Fragment {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.sort_menu,menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.sort_menu,menu);
 
         return true;
     }
