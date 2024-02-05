@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
 import com.example.project1.data.Course;
+import com.example.project1.viewmodel.AbstractAppViewModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -23,10 +26,16 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private List<ListItem> itemList;
     private List<ListItem> filteredList;
+    private AbstractAppViewModel viewModel;
 
-    public ListItemAdapter(List<ListItem> itemList) {
-        this.itemList = itemList;
-        this.filteredList = new ArrayList<>(itemList);
+    public ListItemAdapter (AbstractAppViewModel viewModel) {
+        this.viewModel = viewModel;
+        this.filteredList = new ArrayList<>();
+    }
+
+    public void setList(List<ListItem> items) {
+        this.itemList = items;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -109,8 +118,15 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public void bindExam(Exam exam) {
             examNameDisplay.setText(exam.getName());
+            examDateDisplay.setText(formatDate(exam.getDue()));
+            examTimeDisplay.setText(exam.getTime());
+            examLocationDisplay.setText(exam.getLocation());
         }
-    }
+
+        private String formatDate(Date date) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            return sdf.format(date);
+        }
 
     private static class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView taskDisplay;
@@ -141,67 +157,67 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public void filterByCourse(String courseName) {
-        filteredList.clear();
-
-        for (ListItem item : itemList) {
-            if (item instanceof Assignment || item instanceof Exam) {
-                Course associatedCourse = item.getAssociatedClass();
-                if (associatedCourse != null && associatedCourse.getName().equalsIgnoreCase(courseName)) {
-                    filteredList.add(item);
-                }
-            }
-        }
-
-        notifyDataSetChanged();
-    }
-
-    public void filterByAssignment() {
-        filteredList.clear();
-
-        for (ListItem item : itemList) {
-            if (item instanceof Assignment) {
-                filteredList.add(item);
-            }
-        }
-
-        notifyDataSetChanged();
-    }
-
-    public void filterByTask() {
-        filteredList.clear();
-
-        for (ListItem item : itemList) {
-            if (item instanceof Todo) {
-                filteredList.add(item);
-            }
-        }
-
-        notifyDataSetChanged();
-    }
-
-    public void filterByExams() {
-        filteredList.clear();
-
-        for (ListItem item : itemList) {
-            if (item instanceof Exam) {
-                filteredList.add(item);
-            }
-        }
-
-        notifyDataSetChanged();
-    }
-
-
-    public void filterByDueDate(Date dueDate) {
-        filteredList.clear();
-
-        for (ListItem item : itemList) {
-            if (item instanceof Assignment && ((Assignment) item).getDue().equals(dueDate)) {
-                filteredList.add(item);
-            }
-        }
-
-        notifyDataSetChanged();
-    }
+//    public void filterByCourse(String courseName) {
+//        filteredList.clear();
+//
+//        for (ListItem item : itemList) {
+//            if (item instanceof Assignment || item instanceof Exam) {
+//                Course associatedCourse = item.getAssociatedClass();
+//                if (associatedCourse != null && associatedCourse.getName().equalsIgnoreCase(courseName)) {
+//                    filteredList.add(item);
+//                }
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
+//
+//    public void filterByAssignment() {
+//        filteredList.clear();
+//
+//        for (ListItem item : itemList) {
+//            if (item instanceof Assignment) {
+//                filteredList.add(item);
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
+//
+//    public void filterByTask() {
+//        filteredList.clear();
+//
+//        for (ListItem item : itemList) {
+//            if (item instanceof Todo) {
+//                filteredList.add(item);
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
+//
+//    public void filterByExams() {
+//        filteredList.clear();
+//
+//        for (ListItem item : itemList) {
+//            if (item instanceof Exam) {
+//                filteredList.add(item);
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
+//
+//
+//    public void filterByDueDate(Date dueDate) {
+//        filteredList.clear();
+//
+//        for (ListItem item : itemList) {
+//            if (item instanceof Assignment && ((Assignment) item).getDue().equals(dueDate)) {
+//                filteredList.add(item);
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
 }

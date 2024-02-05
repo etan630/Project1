@@ -92,6 +92,10 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
         listItem.setId(id);
         numUniqueListItems++;
 
+        List<ListItem> updatedList = new ArrayList<>(list.getValue());
+        updatedList.add(listItem);
+        list.postValue(updatedList);
+
         return id;
     }
 
