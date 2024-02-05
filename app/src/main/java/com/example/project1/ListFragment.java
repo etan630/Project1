@@ -48,12 +48,19 @@ public class ListFragment extends Fragment {
         recyclerView.setAdapter(listItemAdapter);
 
         viewModel.getList().observe(getViewLifecycleOwner(), this::updateList);
+
         return view;
     }
 
     private void updateList(List<ListItem> newList) {
         itemList = newList;
         listItemAdapter.setList(itemList);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 
     //Menu menu;
@@ -79,12 +86,6 @@ public class ListFragment extends Fragment {
 //
 //        return true;
 //    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 
 //    @Override
 //    public void onCreate(@Nullable Bundle savedInstanceState) {

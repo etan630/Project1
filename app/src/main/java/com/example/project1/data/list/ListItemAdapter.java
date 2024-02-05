@@ -28,7 +28,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private List<ListItem> filteredList;
     private AbstractAppViewModel viewModel;
 
-    public ListItemAdapter (AbstractAppViewModel viewModel) {
+    public ListItemAdapter(AbstractAppViewModel viewModel) {
         this.viewModel = viewModel;
         this.filteredList = new ArrayList<>();
     }
@@ -55,56 +55,6 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return itemList.size();
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        RecyclerView.ViewHolder viewHolder;
-
-        switch (viewType) {
-            case VIEW_TYPE_1:
-                View v_exam = inflater.inflate(R.layout.fragment_exam, parent, false);
-                viewHolder = new ExamViewHolder(v_exam);
-                break;
-
-            case VIEW_TYPE_2:
-                View v_task = inflater.inflate(R.layout.fragment_task, parent, false);
-                viewHolder = new TaskViewHolder(v_task);
-                break;
-
-            case VIEW_TYPE_3:
-                View v_assign = inflater.inflate(R.layout.fragment_assignment, parent, false);
-                viewHolder = new AssignmentViewHolder(v_assign);
-                break;
-
-            default:
-                throw new IllegalArgumentException("Invalid view type");
-        }
-
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ListItem item = itemList.get(position);
-
-        switch (holder.getItemViewType()) {
-            case VIEW_TYPE_1:
-                ((ExamViewHolder) holder).bindExam((Exam) item);
-                break;
-
-            case VIEW_TYPE_2:
-                ((TaskViewHolder) holder).bindTask((Todo) item);
-                break;
-
-            case VIEW_TYPE_3:
-                ((AssignmentViewHolder) holder).bindAssignment((Assignment) item);
-                break;
-
-            default:
-                throw new IllegalArgumentException("Invalid view type");
-        }
-    }
-
     private static class ExamViewHolder extends RecyclerView.ViewHolder {
         TextView examNameDisplay, examDateDisplay, examTimeDisplay, examLocationDisplay;
 
@@ -127,35 +77,87 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             return sdf.format(date);
         }
-
-    private static class TaskViewHolder extends RecyclerView.ViewHolder {
-        TextView taskDisplay;
-
-        public TaskViewHolder(View itemView) {
-            super(itemView);
-            taskDisplay = itemView.findViewById(R.id.task_display);
-        }
-
-        public void bindTask(Todo todo) {
-            taskDisplay.setText(todo.getName());
-        }
     }
 
-    private static class AssignmentViewHolder extends RecyclerView.ViewHolder {
-        TextView assignCourse, assignName, assignDue;
+        private static class TaskViewHolder extends RecyclerView.ViewHolder {
+            TextView taskDisplay;
 
-        public AssignmentViewHolder(View itemView) {
-            super(itemView);
-            assignCourse = itemView.findViewById(R.id.assign_course);
-            assignName = itemView.findViewById(R.id.assign_name);
-            assignDue = itemView.findViewById(R.id.assign_due);
+            public TaskViewHolder(View itemView) {
+                super(itemView);
+                taskDisplay = itemView.findViewById(R.id.task_display);
+            }
+
+            public void bindTask(Todo todo) {
+                taskDisplay.setText(todo.getName());
+            }
         }
-        public void bindAssignment(Assignment assignment) {
-            assignCourse.setText(assignment.getAssociatedClass().getName());
-            assignName.setText(assignment.getName());
-            assignDue.setText(assignment.getDue().toString());
+
+        private static class AssignmentViewHolder extends RecyclerView.ViewHolder {
+            TextView assignCourse, assignName, assignDue;
+
+            public AssignmentViewHolder(View itemView) {
+                super(itemView);
+                assignCourse = itemView.findViewById(R.id.assign_course);
+                assignName = itemView.findViewById(R.id.assign_name);
+                assignDue = itemView.findViewById(R.id.assign_due);
+            }
+
+            public void bindAssignment(Assignment assignment) {
+                assignCourse.setText(assignment.getAssociatedClass().getName());
+                assignName.setText(assignment.getName());
+                assignDue.setText(assignment.getDue().toString());
+            }
         }
-    }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            RecyclerView.ViewHolder viewHolder;
+
+            switch (viewType) {
+                case VIEW_TYPE_1:
+                    View v_exam = inflater.inflate(R.layout.fragment_exam, parent, false);
+                    viewHolder = new ExamViewHolder(v_exam);
+                    break;
+
+                case VIEW_TYPE_2:
+                    View v_task = inflater.inflate(R.layout.fragment_task, parent, false);
+                    viewHolder = new TaskViewHolder(v_task);
+                    break;
+
+                case VIEW_TYPE_3:
+                    View v_assign = inflater.inflate(R.layout.fragment_assignment, parent, false);
+                    viewHolder = new AssignmentViewHolder(v_assign);
+                    break;
+
+                default:
+                    throw new IllegalArgumentException("Invalid view type");
+            }
+
+            return viewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+            ListItem item = itemList.get(position);
+
+            switch (holder.getItemViewType()) {
+                case VIEW_TYPE_1:
+                    ((ExamViewHolder) holder).bindExam((Exam) item);
+                    break;
+
+                case VIEW_TYPE_2:
+                    ((TaskViewHolder) holder).bindTask((Todo) item);
+                    break;
+
+                case VIEW_TYPE_3:
+                    ((AssignmentViewHolder) holder).bindAssignment((Assignment) item);
+                    break;
+
+                default:
+                    throw new IllegalArgumentException("Invalid view type");
+            }
+        }
 
 //    public void filterByCourse(String courseName) {
 //        filteredList.clear();
@@ -220,4 +222,4 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //
 //        notifyDataSetChanged();
 //    }
-}
+    }

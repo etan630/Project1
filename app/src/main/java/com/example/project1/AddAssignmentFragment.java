@@ -62,4 +62,6 @@ public class AddAssignmentFragment extends AbstractAddFragment {
             navController.navigate(R.id.listFragment);
         };
     }
+
+
 }
