@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +14,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project1.R;
-import com.example.project1.viewmodel.AppViewModel;
+import com.example.project1.viewmodel.AbstractAppViewModel;
+import com.example.project1.viewmodel.NoDBAppViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +64,7 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
 
     private void deleteCourse(Course course) {
         courses.remove(course);
-        AppViewModel viewModel = new ViewModelProvider((FragmentActivity) context).get(AppViewModel.class);
+        AbstractAppViewModel viewModel = new ViewModelProvider((FragmentActivity) context).get(NoDBAppViewModel.class);
         viewModel.removeCourse(course);
     }
 }

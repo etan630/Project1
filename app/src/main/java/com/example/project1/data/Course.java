@@ -16,6 +16,8 @@ public class Course {
     private String location, roomNumber;
     private List<DayOfWeek> days = new ArrayList<>();
 
+    public Course() {}
+
     public Course(String name, String time, String instructor, String section, String location, String roomNumber, List<DayOfWeek> days) {
         this.name = name;
         this.time = time;
@@ -24,6 +26,10 @@ public class Course {
         this.location = location;
         this.roomNumber = roomNumber;
         this.days = days;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

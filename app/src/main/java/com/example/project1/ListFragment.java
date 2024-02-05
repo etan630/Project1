@@ -14,11 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.data.list.ListItemAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ListFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -31,9 +26,9 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        listItemAdapter = new ListItemAdapter(/* provide your data */);
-        recyclerView.setAdapter(listItemAdapter);
+//        recyclerView = view.findViewById(R.id.recyclerView);
+//        listItemAdapter = new ListItemAdapter(/* provide your data */);
+//        recyclerView.setAdapter(listItemAdapter);
 
         return view;
     }
@@ -52,34 +47,36 @@ public class ListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_due_date:
-                // Handle due date filter
-                listItemAdapter.filterByDueDate();
-                return true;
+//        switch (item.getItemId()) {
+//            case R.id.menu_due_date:
+//                // Handle due date filter
+//                listItemAdapter.filterByDueDate();
+//                return true;
+//
+//            case R.id.menu_course:
+//                // Handle course filter
+//                listItemAdapter.filterByCourse();
+//                return true;
+//
+//            case R.id.menu_assignments:
+//                // Handle assignments filter
+//                listItemAdapter.filterByAssignment();
+//                return true;
+//
+//            case R.id.menu_exams:
+//                // Handle exams filter
+//                listItemAdapter.filterByExams();
+//                return true;
+//
+//            case R.id.menu_to_do:
+//                // Handle to-do filter
+//                listItemAdapter.filterByTask();
+//                return true;
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
 
-            case R.id.menu_course:
-                // Handle course filter
-                listItemAdapter.filterByCourse();
-                return true;
-
-            case R.id.menu_assignments:
-                // Handle assignments filter
-                listItemAdapter.filterByAssignment();
-                return true;
-
-            case R.id.menu_exams:
-                // Handle exams filter
-                listItemAdapter.filterByExams();
-                return true;
-
-            case R.id.menu_to_do:
-                // Handle to-do filter
-                listItemAdapter.filterByTask();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return true;
     }
 }

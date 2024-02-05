@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project1.data.Course;
 import com.example.project1.data.CourseListAdapter;
+import com.example.project1.viewmodel.AbstractAppViewModel;
 import com.example.project1.viewmodel.NoDBAppViewModel;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class CoursesFragment extends Fragment {
     EditText roomInput;
     private ArrayList<Course> courseList;
     private ArrayAdapter<Course> coursesAdapter;
-    private NoDBAppViewModel model;
+    private AbstractAppViewModel model;
 
     public CoursesFragment() {
         // Required empty public constructor
@@ -76,8 +77,7 @@ public class CoursesFragment extends Fragment {
         courseList = new ArrayList<>();
         coursesAdapter = new CourseListAdapter(getActivity(), courseList);
 
-
-        model = new ViewModelProvider(this).get(AppViewModel.class);
+        model = new ViewModelProvider(this).get(NoDBAppViewModel.class);
 
         updateCourse();
     }
