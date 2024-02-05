@@ -26,17 +26,17 @@ public class ListFragment extends Fragment {
 
     // ... Other class members and methods
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
-
-
-        recyclerView = view.findViewById(R.id.recyclerView);
-        listItemAdapter = new ListItemAdapter(/* provide your data */);
-        recyclerView.setAdapter(listItemAdapter);
-
-        return view;
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_list, container, false);
+//
+//
+//        recyclerView = view.findViewById(R.id.recyclerView);
+//        listItemAdapter = new ListItemAdapter(/* provide your data */);
+//        recyclerView.setAdapter(listItemAdapter);
+//
+//        return view;
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
