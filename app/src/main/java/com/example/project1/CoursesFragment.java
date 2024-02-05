@@ -77,7 +77,7 @@ public class CoursesFragment extends Fragment {
         coursesAdapter = new CourseListAdapter(getActivity(), courseList);
 
 
-        model = new ViewModelProvider(this).get(AppViewModel.class);
+        //model = new ViewModelProvider(this).get(AppViewModel.class);
 
         updateCourse();
     }

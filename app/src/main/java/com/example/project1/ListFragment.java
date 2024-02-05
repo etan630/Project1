@@ -31,8 +31,8 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        listItemAdapter = new ListItemAdapter(/* provide your data */);
+        //recyclerView = view.findViewById(R.id.recyclerView);
+       // listItemAdapter = new ListItemAdapter(/* provide your data */);
         recyclerView.setAdapter(listItemAdapter);
 
         return view;
@@ -54,7 +54,7 @@ public class ListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_due_date:
-                // Handle due date filter
+                //Handle due date filter
                 listItemAdapter.filterByDueDate();
                 return true;
 

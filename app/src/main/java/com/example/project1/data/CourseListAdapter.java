@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project1.R;
-import com.example.project1.viewmodel.AppViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +63,7 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
 
     private void deleteCourse(Course course) {
         courses.remove(course);
-        AppViewModel viewModel = new ViewModelProvider((FragmentActivity) context).get(AppViewModel.class);
-        viewModel.removeCourse(course);
+        //AppViewModel viewModel = new ViewModelProvider((FragmentActivity) context).get(AppViewModel.class);
+       // viewModel.removeCourse(course);
     }
 }
