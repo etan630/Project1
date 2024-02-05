@@ -15,9 +15,9 @@
     <!-- variable titles -->
     <string name="exam_name">Exam Name</string>
     <string name="time">Time</string>
-    <string name="due_date">Due Date</string>
+    <string name="due_date">Due Date (MM/DD/YYYY)</string>
     <string name="assignment">Assignment</string>
-    <string name="exam_date">Exam Date</string>
+    <string name="exam_date">Exam Date (MM/DD/YYYY)</string>
     <string name="location">Location</string>
     <string name="task">Task</string>
     <string name="class_name">Class Name</string>

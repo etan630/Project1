@@ -41,7 +41,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
         Course math = new Course("math", "now", "pedro", "z", "gt"
                 , "404", new ArrayList<>());
         addCourse(math);
-        addListItem(new Exam("doom", new Date(), math, "here"));
+        //addListItem(new Exam("doom",  new Date(), "math", "s", "here"));
     }
 
     public int addCourse(Course course) {
