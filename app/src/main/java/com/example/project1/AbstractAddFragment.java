@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,12 +15,18 @@ import androidx.navigation.Navigation;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 import com.example.project1.viewmodel.NoDBAppViewModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A screen with a back button, an "add" button, and a placeholder for custom
  * implementation-specific form content.
  */
 public abstract class AbstractAddFragment extends Fragment {
     protected AbstractAppViewModel viewModel;
+    private DateFormat dateFormat = new SimpleDateFormat("MM/DD/YYYY");
 
     /**
      * Gets the id of the View (typically a form with text inputs) to be inserted into this add
@@ -56,6 +63,19 @@ public abstract class AbstractAddFragment extends Fragment {
         }
 
         return view;
+    }
+
+    public Date parseDate(String str) {
+        Date parsed;
+        try {
+            parsed = dateFormat.parse(str);
+            return parsed;
+        } catch (ParseException e) {
+            Toast toast = Toast.makeText(getActivity(), "Invalid date.", Toast.LENGTH_SHORT);
+            toast.show();
+
+            return null;
+        }
     }
 
     private void activateNavButtons(View view) {
