@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back"
     android:theme="@style/Theme.AppCompat.NoActionBar">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,6 +17,7 @@
         android:contentDescription="add"
         android:focusable="false"
         android:src="@drawable/baseline_add_24"
+        app:backgroundTint="@color/accent"
         app:fabCustomSize="72dp"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
@@ -37,7 +39,10 @@
         android:id="@+id/nav_fragment"
         android:layout_width="fill_parent"
         android:layout_height="72dp"
+        android:background="@color/ui"
         app:itemIconSize="32dp"
+        app:itemIconTint="@color/nav_colors"
+        app:itemTextColor="@color/nav_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
