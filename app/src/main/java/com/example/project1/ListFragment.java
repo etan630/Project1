@@ -2,6 +2,7 @@ package com.example.project1;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,8 +28,7 @@ public class ListFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ListItemAdapter listItemAdapter;
-    private AbstractAppViewModel viewModel;
-
+    private NoDBAppViewModel viewModel;
     private List<ListItem> itemList;
 
     public ListFragment() {
@@ -37,14 +37,13 @@ public class ListFragment extends Fragment {
 
     @SuppressLint("MissingInflatedId")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        viewModel = new ViewModelProvider(this).get(NoDBAppViewModel.class);
+
+        viewModel = new ViewModelProvider(requireActivity()).get(NoDBAppViewModel.class);
 
         recyclerView = view.findViewById(R.id.lv_list);
-        listItemAdapter = new ListItemAdapter(viewModel); // Initialize the adapter
+        listItemAdapter = new ListItemAdapter(viewModel);
         recyclerView.setAdapter(listItemAdapter);
 
         viewModel.getList().observe(getViewLifecycleOwner(), this::updateList);
@@ -54,6 +53,9 @@ public class ListFragment extends Fragment {
 
     private void updateList(List<ListItem> newList) {
         itemList = newList;
+        for (ListItem item : itemList) {
+            Log.d("ListFragment", "Item type: " + item.getClass().getSimpleName());
+        }
         listItemAdapter.setList(itemList);
     }
 

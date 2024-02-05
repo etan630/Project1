@@ -1,10 +1,14 @@
 package com.example.project1.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.project1.data.Course;
+import com.example.project1.data.list.Assignment;
 import com.example.project1.data.list.Exam;
 import com.example.project1.data.list.ListItem;
+import com.example.project1.data.list.Todo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,10 +42,17 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
     }
 
     public void initWithDummyData() {
-        Course math = new Course("math", "now", "pedro", "z", "gt"
-                , "404", new ArrayList<>());
+        Course math = new Course("math", "now", "pedro", "z", "gt", "404", new ArrayList<>());
         addCourse(math);
-        //addListItem(new Exam("doom",  new Date(), "math", "s", "here"));
+
+        // Adding an exam
+        addListItem(new Exam("Math Exam", new Date(), "10:00 AM", math, "Exam Hall"));
+
+        // Adding a todo
+        addListItem(new Todo("Complete Homework", math));
+
+        // Adding an assignment
+        addListItem(new Assignment("Programming Assignment", new Date(), math));
     }
 
     public int addCourse(Course course) {
@@ -96,6 +107,8 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
         updatedList.add(listItem);
         list.postValue(updatedList);
 
+        Log.d("ViewModel", "List contents: " + list.getValue().toString());
+
         return id;
     }
 
@@ -133,7 +146,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         list.add(toAdd);
 
-        liveData.setValue(list);
+        liveData.postValue(list); //changed
     }
 
     private <T> void setInLiveDataList(MutableLiveData<List<T>> liveData, T toSet, int index) {
@@ -141,7 +154,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         list.set(index, toSet);
 
-        liveData.setValue(list);
+        liveData.postValue(list);
     }
 
     private <T> void removeFromLiveDataList(MutableLiveData<List<T>> liveData, T toRemove) {
@@ -149,6 +162,8 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         list.remove(toRemove);
 
-        liveData.setValue(list);
+        liveData.postValue(list);
     }
+
+
 }

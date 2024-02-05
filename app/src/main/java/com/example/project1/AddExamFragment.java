@@ -1,8 +1,10 @@
 package com.example.project1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,8 +47,14 @@ public class AddExamFragment extends AbstractAddFragment {
             String time = timeInput.getText().toString();
             String location = locInput.getText().toString();
 
+            if (selectedCourse == null || name.isEmpty() || dateStr.isEmpty() || time.isEmpty() || location.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Date date = parseDate(dateStr);
             if (date == null) {
+                Toast.makeText(requireContext(), "Invalid date format", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -58,6 +66,9 @@ public class AddExamFragment extends AbstractAddFragment {
                     location
             ));
 
+            Toast.makeText(requireContext(), "Exam added successfully", Toast.LENGTH_SHORT).show();
+
+            Log.d("Navigation", "Navigating to ListFragment");
             navController.navigate(R.id.listFragment);
         };
     }

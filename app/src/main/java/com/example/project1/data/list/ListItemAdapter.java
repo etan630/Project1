@@ -34,12 +34,19 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setList(List<ListItem> items) {
-        this.itemList = items;
-        notifyDataSetChanged();
+        if (items != null) {
+            this.itemList = new ArrayList<>(items);
+            this.filteredList = new ArrayList<>(items);
+            notifyDataSetChanged();
+        }
     }
 
     @Override
     public int getItemViewType(int position) {
+        if (itemList == null || itemList.isEmpty()) {
+            return super.getItemViewType(position);
+        }
+
         ListItem item = itemList.get(position);
         if (item instanceof Exam) {
             return VIEW_TYPE_1;
@@ -52,7 +59,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return itemList == null ? 0 : itemList.size();
     }
 
     private static class ExamViewHolder extends RecyclerView.ViewHolder {
@@ -105,7 +112,12 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             public void bindAssignment(Assignment assignment) {
                 assignCourse.setText(assignment.getAssociatedClass().getName());
                 assignName.setText(assignment.getName());
-                assignDue.setText(assignment.getDue().toString());
+                assignDue.setText(formatDate(assignment.getDue()));
+            }
+
+            private String formatDate(Date date) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                return sdf.format(date);
             }
         }
 
