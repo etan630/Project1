@@ -1,5 +1,7 @@
 package com.example.project1.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -13,6 +15,7 @@ import java.util.List;
  * fragments.
  */
 public abstract class AbstractAppViewModel extends ViewModel {
+    private static final String TAG = "AbstractAppViewModel";
     public abstract MutableLiveData<List<Course>> getCourses();
     public abstract Course getCourseById(int id);
     public abstract int addCourse(Course course);
@@ -25,4 +28,10 @@ public abstract class AbstractAppViewModel extends ViewModel {
     public abstract int addListItem(ListItem listItem);
     public abstract void removeListItem(ListItem listItem);
     public abstract boolean replaceListItemById(int id, ListItem listItem);
+
+
+    public void logListData() {
+        List<ListItem> dataList = getList().getValue();
+        Log.d(TAG, "List Data Contents: " + dataList);
+    }
 }

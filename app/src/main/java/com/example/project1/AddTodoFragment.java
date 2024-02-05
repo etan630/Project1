@@ -1,8 +1,10 @@
 package com.example.project1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,10 +39,18 @@ public class AddTodoFragment extends AbstractAddFragment {
             Course selectedCourse = courseSpinner.getSelectedCourse();
             String name = nameInput.getText().toString();
 
+            if (selectedCourse == null || name.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
             viewModel.addListItem(new Todo(
                     name,
                     selectedCourse
             ));
+
+            Toast.makeText(requireContext(), "Task added successfully", Toast.LENGTH_SHORT).show();
+
+            Log.d("Navigation", "Navigating to ListFragment");
 
             navController.navigate(R.id.listFragment);
         };

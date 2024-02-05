@@ -25,4 +25,9 @@
     <string name="time_class_input">Time</string>
     <string name="courses">Courses</string>
     <string name="list">List</string>
+    <string name="course_dis">Course:</string>
+    <string name="assignment_disp">Assignment:</string>
+    <string name="due_date_disp">Due Date:</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
 </resources>

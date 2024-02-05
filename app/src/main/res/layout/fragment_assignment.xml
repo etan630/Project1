@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -15,19 +16,19 @@
             android:id="@+id/assign_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Course:" />
+            android:text="@string/course_dis" />
 
         <TextView
             android:id="@+id/assign_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assignment:" />
+            android:text="@string/assignment_disp" />
 
         <TextView
             android:id="@+id/assign_due"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Due Date:" />
+            android:text="@string/due_date_disp" />
 
     </LinearLayout>
 
@@ -42,13 +43,15 @@
             android:id="@+id/edit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_edit" />
+            android:src="@android:drawable/ic_menu_edit"
+            android:contentDescription="@string/edit" />
 
         <ImageButton
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_delete" />
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="@string/delete" />
     </LinearLayout>
 
 </LinearLayout>

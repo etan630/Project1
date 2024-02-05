@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.data.CourseListAdapter;
@@ -44,10 +45,17 @@ public class ListFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.lv_list);
         listItemAdapter = new ListItemAdapter(viewModel);
+        //recyclerView.setAdapter(listItemAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listItemAdapter);
 
-        viewModel.getList().observe(getViewLifecycleOwner(), this::updateList);
-
+        //viewModel.getList().observe(getViewLifecycleOwner(), this::updateList);
+        viewModel.getList().observe(getViewLifecycleOwner(), list -> {
+            // Update the adapter with the new list
+            listItemAdapter.setList(list);
+        });
         return view;
     }
 

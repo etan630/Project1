@@ -1,6 +1,7 @@
 package com.example.project1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,8 +23,6 @@ public class AddAssignmentFragment extends AbstractAddFragment {
     private CourseSpinner courseSpinner;
     private EditText nameInput;
     private EditText dateInput;
-
-    private DateFormat dateFormat = new SimpleDateFormat("MM/DD/YYYY");
 
     @Override
     protected int getFormContent() {
@@ -48,8 +47,14 @@ public class AddAssignmentFragment extends AbstractAddFragment {
             String name = nameInput.getText().toString();
             String dateStr = dateInput.getText().toString();
 
+            if (selectedCourse == null || name.isEmpty() || dateStr.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Date date = parseDate(dateStr);
             if (date == null) {
+                Toast.makeText(requireContext(), "Invalid date format", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -58,6 +63,10 @@ public class AddAssignmentFragment extends AbstractAddFragment {
                     date,
                     selectedCourse
             ));
+
+            Toast.makeText(requireContext(), "Assignment added successfully", Toast.LENGTH_SHORT).show();
+
+            Log.d("Navigation", "Navigating to ListFragment");
 
             navController.navigate(R.id.listFragment);
         };

@@ -53,6 +53,8 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         // Adding an assignment
         addListItem(new Assignment("Programming Assignment", new Date(), math));
+
+        logListData();
     }
 
     public int addCourse(Course course) {
@@ -103,14 +105,17 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
         listItem.setId(id);
         numUniqueListItems++;
 
-        List<ListItem> updatedList = new ArrayList<>(list.getValue());
-        updatedList.add(listItem);
-        list.postValue(updatedList);
+        List<ListItem> currentList = list.getValue();
 
-        Log.d("ViewModel", "List contents: " + list.getValue().toString());
+        if (currentList != null) {
+            currentList.add(listItem);
+            list.postValue(currentList);
 
+            Log.d("ViewModel", "List contents: " + currentList.toString());
+        }
         return id;
     }
+
 
     public void removeListItem(ListItem listItem) {
         removeFromLiveDataList(list, listItem);
@@ -118,19 +123,29 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
     @Override
     public ListItem getListItemById(int id) {
-        return list.getValue().stream()
-                .filter(listItem -> listItem.getId() == id)
-                .findAny()
-                .orElse(null);
+        List<ListItem> listItemList = list.getValue();
+
+        if (listItemList != null) {
+            return listItemList.stream()
+                    .filter(listItem -> listItem.getId() == id)
+                    .findAny()
+                    .orElse(null);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean replaceListItemById(int id, ListItem listItem) {
-        List<Course> courseList = this.courses.getValue();
-        int index = IntStream.range(0, courseList.size())
-                .filter(i -> courseList.get(i).getId() == id)
-                .findAny()
-                .orElse(-1);
+        int index = -1;
+
+        List<ListItem> listItemList = this.list.getValue();
+        if (listItemList != null) {
+            index = IntStream.range(0, listItemList.size())
+                    .filter(i -> listItemList.get(i).getId() == id)
+                    .findAny()
+                    .orElse(-1);
+        }
 
         if (index == -1) {
             return false;
@@ -140,6 +155,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
             return true;
         }
     }
+
 
     private <T> void addToLiveDataList(MutableLiveData<List<T>> liveData, T toAdd) {
         List<T> list = liveData.getValue() == null ? new ArrayList<>() : liveData.getValue();

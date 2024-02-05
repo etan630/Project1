@@ -1,5 +1,6 @@
 package com.example.project1.data.list;// ListAdapter.java
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,14 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void setList(List<ListItem> items) {
         if (items != null) {
+            Log.d("ListItemAdapter", "Received list: " + items.toString());
+
             this.itemList = new ArrayList<>(items);
             this.filteredList = new ArrayList<>(items);
             notifyDataSetChanged();
         }
     }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -121,6 +125,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             }
         }
 
+        @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -169,6 +174,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 default:
                     throw new IllegalArgumentException("Invalid view type");
             }
+            Log.d("ListItemAdapter", "Bound item at position " + position + ": " + item.toString());
         }
 
 //    public void filterByCourse(String courseName) {
