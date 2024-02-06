@@ -20,25 +20,30 @@
             android:id="@+id/exam_name_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exam Name:" />
+            android:text="Exam Name:"
+            android:textColor="@color/cardColor"/>
 
         <TextView
             android:id="@+id/exam_date_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date:" />
+            android:text="Date:"
+            android:textColor="@color/cardColor"/>
 
         <TextView
             android:id="@+id/exam_time_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Time:" />
+            android:text="Time:"
+            android:textColor="@color/cardColor"/>
 
         <TextView
             android:id="@+id/exam_location_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location:" />
+            android:text="Location:"
+            android:textColor="@color/cardColor"
+            />
     </LinearLayout>
 
     <LinearLayout

@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.05"
         android:minWidth="0dp"
-        app:buttonTint="@color/checkbox" />
+        app:buttonTint="@color/cardColor" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -30,19 +30,22 @@
             android:id="@+id/assign_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/course_dis" />
+            android:text="@string/course_dis"
+            android:textColor="@color/cardColor"/>
 
         <TextView
             android:id="@+id/assign_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/assignment_disp" />
+            android:text="@string/assignment_disp"
+            android:textColor="@color/cardColor"/>
 
         <TextView
             android:id="@+id/assign_due"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/due_date_disp" />
+            android:text="@string/due_date_disp"
+            android:textColor="@color/cardColor"/>
 
     </LinearLayout>
 
