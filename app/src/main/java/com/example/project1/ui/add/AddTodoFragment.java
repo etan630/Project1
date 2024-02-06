@@ -1,7 +1,6 @@
 package com.example.project1.ui.add;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,7 +30,7 @@ public class AddTodoFragment extends AbstractAddFragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.courseSpinner = new CourseSpinner(view.findViewById(R.id.class_dropdown),
-                viewModel.getCourses());
+                viewModel.getCourses(), this);
 
         this.nameInput = view.findViewById(R.id.text_task_input);
 
@@ -39,7 +38,7 @@ public class AddTodoFragment extends AbstractAddFragment {
         if (editId != -1) {
             Todo source = (Todo) viewModel.getListItemById(editId);
 
-            this.courseSpinner.setSelectedCourse(source.getAssociatedCourse());
+            this.courseSpinner.setSelectedCourse(viewModel.getCourseById(source.getAssociatedCourseId()));
             this.nameInput.setText(source.getName());
         }
     }
@@ -57,7 +56,7 @@ public class AddTodoFragment extends AbstractAddFragment {
 
             Todo newTodo = new Todo(
                     name,
-                    selectedCourse
+                    selectedCourse.getId()
             );
 
             if (editId != -1) {

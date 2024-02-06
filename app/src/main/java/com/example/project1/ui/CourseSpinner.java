@@ -3,7 +3,9 @@ package com.example.project1.ui;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.project1.data.Course;
 
@@ -14,28 +16,36 @@ public class CourseSpinner { // most smelly class award
     private final MutableLiveData<List<Course>> courses;
 
     private final Spinner spinner;
+    private final ArrayAdapter<Course> adapter;
     private final Course noneCourse;
 
-    public CourseSpinner(Spinner spinner, MutableLiveData<List<Course>> courses) {
+    public CourseSpinner(Spinner spinner, MutableLiveData<List<Course>> courses, LifecycleOwner lifecycleOwner) {
         this.courses = courses;
 
         this.spinner = spinner;
 
-        ArrayAdapter<Course> adapter = new ArrayAdapter<>(
+        this.adapter = new ArrayAdapter<>(
                 spinner.getContext(),
                 android.R.layout.simple_spinner_item
         );
 
-        // TODO react to changed courses
         this.noneCourse = new Course();
         noneCourse.setName("None");
-        adapter.add(noneCourse); // hacky...
 
-        adapter.addAll(Objects.requireNonNull(courses.getValue()));
+        courses.observe(lifecycleOwner, newCourses -> updateSelections());
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
+    }
+
+    private void updateSelections() {
+        adapter.clear();
+
+        // TODO react to changed courses
+        adapter.add(noneCourse); // hacky...
+
+        adapter.addAll(Objects.requireNonNull(courses.getValue()));
     }
 
     public Course getSelectedCourse() {

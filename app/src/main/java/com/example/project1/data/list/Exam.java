@@ -9,8 +9,8 @@ public class Exam extends ListItem {
     String location;
     String time;
 
-    public Exam(String name, Date due, String time, Course associatedCourse, String location) {
-        super(name, due, associatedCourse);
+    public Exam(String name, Date due, String time, int associatedCourseId, String location) {
+        super(name, due, associatedCourseId);
         this.location = location;
         this.time = time;
     }

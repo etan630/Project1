@@ -1,7 +1,6 @@
 package com.example.project1.ui.add;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,7 +32,7 @@ public class AddExamFragment extends AbstractAddFragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.courseSpinner = new CourseSpinner(view.findViewById(R.id.class_dropdown),
-                viewModel.getCourses());
+                viewModel.getCourses(), this);
 
         this.nameInput = view.findViewById(R.id.exam_name_input);
         this.dateInput = view.findViewById(R.id.exam_date_input);
@@ -44,8 +43,9 @@ public class AddExamFragment extends AbstractAddFragment {
         if (editId != -1) {
             Exam source = (Exam) viewModel.getListItemById(editId);
 
-            this.courseSpinner.setSelectedCourse(source.getAssociatedCourse());
+            this.courseSpinner.setSelectedCourse(viewModel.getCourseById(source.getAssociatedCourseId()));
             this.nameInput.setText(source.getName());
+            this.dateInput.setText(dateFormat.format(source.getDue()));
             this.timeInput.setText(source.getTime());
             this.locInput.setText(source.getLocation());
         }
@@ -75,11 +75,11 @@ public class AddExamFragment extends AbstractAddFragment {
                     name,
                     date,
                     time,
-                    selectedCourse,
+                    selectedCourse.getId(),
                     location
             );
 
-            if (editId == -1) {
+            if (editId != -1) {
                 viewModel.replaceListItemById(editId, newExam);
             } else {
                 viewModel.addListItem(newExam);
