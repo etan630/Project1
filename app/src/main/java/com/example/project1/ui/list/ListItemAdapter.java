@@ -10,6 +10,8 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.data.Course;
+import com.example.project1.data.list.Assignment;
 import com.example.project1.data.list.Exam;
 import com.example.project1.data.list.ListItem;
 import com.example.project1.data.list.Todo;
@@ -115,7 +117,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //
 //        for (ListItem item : itemList) {
 //            if (item instanceof Assignment || item instanceof Exam) {
-//                Course associatedCourse = item.getAssociatedClass();
+//                Course associatedCourse = item.getAssociatedCourse();
 //                if (associatedCourse != null && associatedCourse.getName().equalsIgnoreCase(courseName)) {
 //                    filteredList.add(item);
 //                }

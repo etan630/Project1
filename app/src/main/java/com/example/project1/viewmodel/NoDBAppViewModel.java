@@ -154,7 +154,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         list.add(toAdd);
 
-        liveData.postValue(list); //changed
+        liveData.postValue(list);
     }
 
     private <T> void setInLiveDataList(MutableLiveData<List<T>> liveData, T toSet, int index) {

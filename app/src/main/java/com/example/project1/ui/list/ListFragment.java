@@ -3,6 +3,9 @@ package com.example.project1.ui.list;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -46,7 +49,6 @@ public class ListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listItemAdapter);
 
-        //viewModel.getList().observe(getViewLifecycleOwner(), this::updateList);
         viewModel.getList().observe(getViewLifecycleOwner(), list -> {
             // Update the adapter with the new list
             listItemAdapter.setList(list);
@@ -54,6 +56,7 @@ public class ListFragment extends Fragment {
         return view;
     }
 
+    //get rid
     private void updateList(List<ListItem> newList) {
         itemList = newList;
         for (ListItem item : itemList) {
@@ -65,39 +68,22 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
-
-    //Menu menu;
-
-    // ... Other class members and methods
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_list, container, false);
-//
-//
-//        recyclerView = view.findViewById(R.id.recyclerView);
-//        listItemAdapter = new ListItemAdapter(/* provide your data */);
-//        recyclerView.setAdapter(listItemAdapter);
-//
-//        return view;
-//    }
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflator();
+//        MenuInflater inflater = getMenuInflater();
 //        inflater.inflate(R.menu.sort_menu, menu);
-//
 //        return true;
 //    }
-
+//
 //    @Override
 //    public void onCreate(@Nullable Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        setHasOptionsMenu(true);
-    }
-
+//    }
+//
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        switch (item.getItemId()) {
@@ -132,4 +118,4 @@ public class ListFragment extends Fragment {
 //
 //        return true;
 //    }
-//}
+}
