@@ -42,7 +42,7 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
     }
 
     public void initWithDummyData() {
-        Course math = new Course("math", "now", "pedro", "z", "gt", "404", new ArrayList<>());
+        Course math = new Course("math", "now", "monday", "pedro", "z", "gt", "404");
         addCourse(math);
 
         // Adding an exam

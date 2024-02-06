@@ -48,6 +48,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             holder.sectionTextView.setText(course.getSection());
             holder.buildingTextView.setText(course.getLocation());
             holder.roomTextView.setText(course.getRoomNumber());
+            holder.daysOfWeekTextView.setText(course.getDays());
 
             holder.delete.setOnClickListener(view -> {
                 showDeleteConfirmation(course, position);
@@ -87,6 +88,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         public TextView sectionTextView;
         public TextView buildingTextView;
         public TextView roomTextView;
+        public TextView daysOfWeekTextView;
 
         private ImageButton delete;
 
@@ -98,6 +100,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             sectionTextView = itemView.findViewById(R.id.section_input);
             buildingTextView = itemView.findViewById(R.id.building_input);
             roomTextView = itemView.findViewById(R.id.room_input);
+            daysOfWeekTextView = itemView.findViewById(R.id.day_of_week_input);
 
             delete = itemView.findViewById(R.id.delete_button);
         }

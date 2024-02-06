@@ -22,6 +22,7 @@ public class AddCourseFragment extends AbstractAddFragment {
     private EditText sectionInput;
     private EditText buildingInput;
     private EditText roomInput;
+    private EditText dayOfWeekInput;
     private CourseListAdapter courseListAdapter;
 
     @Override
@@ -39,6 +40,7 @@ public class AddCourseFragment extends AbstractAddFragment {
         sectionInput = view.findViewById(R.id.section_input);
         buildingInput = view.findViewById(R.id.building_input);
         roomInput = view.findViewById(R.id.room_input);
+        dayOfWeekInput = view.findViewById(R.id.day_of_week_input);
 
         this.targetCourseId = AddCourseFragmentArgs.fromBundle(getArguments()).getCourseId();
 
@@ -51,6 +53,7 @@ public class AddCourseFragment extends AbstractAddFragment {
             sectionInput.setText(course.getSection());
             buildingInput.setText(course.getLocation());
             roomInput.setText(course.getRoomNumber());
+            dayOfWeekInput.setText(course.getDays());
         }
     }
 
@@ -64,7 +67,7 @@ public class AddCourseFragment extends AbstractAddFragment {
                     sectionInput.getText().toString(),
                     buildingInput.getText().toString(),
                     roomInput.getText().toString(),
-                    new ArrayList<>() // TODO: input for days of week
+                    dayOfWeekInput.getText().toString() // TODO: input for days of week
             );
             if (targetCourseId == -1) {
                 viewModel.addCourse(newCourse);

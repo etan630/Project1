@@ -30,6 +30,17 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/day_of_week_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:autofillHints="Days of Week"
+        android:ems="10"
+        android:hint="Days of Week"
+        android:inputType="text" />
+
+    <EditText
         android:id="@+id/time_input"
         android:layout_width="300dp"
         android:layout_height="50dp"

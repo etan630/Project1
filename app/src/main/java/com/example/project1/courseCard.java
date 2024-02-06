@@ -27,6 +27,7 @@ public class courseCard extends Fragment {
     EditText sectionInput;
     EditText buildingInput;
     EditText roomInput;
+    EditText daysOfWeekInput;
     private CourseListAdapter coursesAdapter;
     private AbstractAppViewModel model;
 
@@ -47,6 +48,7 @@ public class courseCard extends Fragment {
         sectionInput = view.findViewById(R.id.section_input);
         buildingInput = view.findViewById(R.id.building_input);
         roomInput = view.findViewById(R.id.room_input);
+        daysOfWeekInput = view.findViewById(R.id.day_of_week_input);
 
         //set up viewModel
         model = new ViewModelProvider(getActivity()).get(NoDBAppViewModel.class);

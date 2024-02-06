@@ -14,11 +14,11 @@ public class Course {
 
     private String name, time, instructor, section;
     private String location, roomNumber;
-    private List<DayOfWeek> days = new ArrayList<>();
+    private String days;
 
     public Course() {}
 
-    public Course(String name, String time, String instructor, String section, String location, String roomNumber, List<DayOfWeek> days) {
+    public Course(String name, String time, String instructor, String section, String location, String roomNumber, String days) {
         this.name = name;
         this.time = time;
         this.instructor = instructor;
@@ -56,7 +56,7 @@ public class Course {
         return roomNumber;
     }
 
-    public List<DayOfWeek> getDays() {
+    public String getDays() {
         return days;
     }
 
