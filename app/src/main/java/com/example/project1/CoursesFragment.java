@@ -1,6 +1,7 @@
 package com.example.project1;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +33,9 @@ public class CoursesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_courses, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(NoDBAppViewModel.class);
 
+
         coursesRecyclerView = view.findViewById(R.id.courses_recycler_view);
-        courseAdapter = new CourseListAdapter(viewModel);
+        courseAdapter = new CourseListAdapter(viewModel, requireContext());
         coursesRecyclerView.setAdapter(courseAdapter);
 
         viewModel.getCourses().observe(getViewLifecycleOwner(), courseAdapter::setCourses);

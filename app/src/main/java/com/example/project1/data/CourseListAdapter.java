@@ -1,26 +1,33 @@
 package com.example.project1.data;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CourseViewHolder> {
     private AbstractAppViewModel viewModel;
     private List<Course> courses;
+    private Context context;
 
-    public CourseListAdapter(AbstractAppViewModel viewModel) {
+    public CourseListAdapter(AbstractAppViewModel viewModel, Context context) {
         this.viewModel = viewModel;
+        this.context = context;
+        this.courses = new ArrayList<>();
     }
 
     @NonNull
@@ -32,18 +39,20 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-        Course course = viewModel.getCourses().getValue().get(position);
-        holder.classNameTextView.setText(course.getName());
-        holder.instructorTextView.setText(course.getInstructor());
-        holder.timeTextView.setText(course.getTime());
-        holder.sectionTextView.setText(course.getSection());
-        holder.buildingTextView.setText(course.getLocation());
-        holder.roomTextView.setText(course.getRoomNumber());
+        List<Course> courses = viewModel.getCourses().getValue();
+        if (courses != null && position < courses.size()) {
+            Course course = courses.get(position);
+            holder.classNameTextView.setText(course.getName());
+            holder.instructorTextView.setText(course.getInstructor());
+            holder.timeTextView.setText(course.getTime());
+            holder.sectionTextView.setText(course.getSection());
+            holder.buildingTextView.setText(course.getLocation());
+            holder.roomTextView.setText(course.getRoomNumber());
 
-        holder.delete.setOnClickListener(view -> {
-            courses.remove(position);
-            notifyDataSetChanged();
-        });
+            holder.delete.setOnClickListener(view -> {
+                showDeleteConfirmation(course, position);
+            });
+        }
     }
 
     public void setCourses(List<Course> courses) {
@@ -51,9 +60,24 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         notifyDataSetChanged();
     }
 
+    private void showDeleteConfirmation(Course course, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete Course");
+        builder.setMessage("Are you sure you want to delete this course " + course.getName() + "?");
+        builder.setPositiveButton("Yes", (dialog, which) -> deleteCourse(position));
+        builder.setNegativeButton("No", null);
+        builder.show();
+    }
+
+    private void deleteCourse(int position) {
+        courses.remove(position);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return viewModel.getCourses().getValue().size();
+        List<Course> courses = viewModel.getCourses().getValue();
+        return courses != null ? courses.size() : 0;
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
@@ -76,43 +100,6 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             roomTextView = itemView.findViewById(R.id.room_input);
 
             delete = itemView.findViewById(R.id.delete_button);
-
-
         }
     }
 }
-
-
-//
-//    // Override the getView method to customize the appearance of each item in the ListView
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        // Inflate the course_list_item layout if convertView is null
-//        if (convertView == null) {
-//            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_courses, parent, false);
-//        }
-//
-//        //click listeners for delete
-//        Button deleteButton = convertView.findViewById(R.id.delete_button);
-//        deleteButton.setOnClickListener(v -> showDeleteConfirmation(courses.get(position)));
-//
-//        // Return the updated convertView
-//        return convertView;
-//    }
-//
-//    // Add a method to update the list of courses
-//
-//    private void showDeleteConfirmation(Course course) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//        builder.setTitle("Delete Course");
-//        builder.setMessage("Are you sure you want to delete this course " + course.getName() + "?");
-//        builder.setPositiveButton("Yes", (dialog, which) -> deleteCourse(course));
-//        builder.setNegativeButton("No", null);
-//        builder.show();
-//    }
-//
-//    private void deleteCourse(Course course) {
-//        courses.remove(course);
-//        AppViewModel viewModel = new ViewModelProvider((FragmentActivity) context).get(AppViewModel.class);
-//        viewModel.removeCourse(course);
-//    }
