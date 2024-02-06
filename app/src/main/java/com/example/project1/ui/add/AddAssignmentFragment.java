@@ -1,7 +1,6 @@
 package com.example.project1.ui.add;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -34,7 +33,7 @@ public class AddAssignmentFragment extends AbstractAddFragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.courseSpinner = new CourseSpinner(view.findViewById(R.id.class_dropdown),
-                viewModel.getCourses());
+                viewModel.getCourses(), this);
 
         this.nameInput = view.findViewById(R.id.assignment_input);
         this.dateInput = view.findViewById(R.id.duedate_input);
@@ -43,7 +42,7 @@ public class AddAssignmentFragment extends AbstractAddFragment {
         if (editId != -1) {
             Assignment assignment = (Assignment) viewModel.getListItemById(editId);
 
-            courseSpinner.setSelectedCourse(assignment.getAssociatedCourse());
+            courseSpinner.setSelectedCourse(viewModel.getCourseById(assignment.getAssociatedCourseId()));
             nameInput.setText(assignment.getName());
             dateInput.setText(dateFormat.format(assignment.getDue()));
         }
@@ -70,7 +69,7 @@ public class AddAssignmentFragment extends AbstractAddFragment {
             Assignment newAssignment = new Assignment(
                     name,
                     date,
-                    selectedCourse
+                    selectedCourse.getId()
             );
 
             if (editId != -1) {

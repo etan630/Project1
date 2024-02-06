@@ -9,10 +9,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project1.NavGraphDirections;
 import com.example.project1.R;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 
@@ -23,11 +23,13 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
     private AbstractAppViewModel viewModel;
     private List<Course> courses;
     private Context context;
+    private final NavController navController;
 
-    public CourseListAdapter(AbstractAppViewModel viewModel, Context context) {
+    public CourseListAdapter(AbstractAppViewModel viewModel, Context context, NavController navController) {
         this.viewModel = viewModel;
         this.context = context;
         this.courses = new ArrayList<>();
+        this.navController = navController;
     }
 
     @NonNull
@@ -42,6 +44,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         List<Course> courses = viewModel.getCourses().getValue();
         if (courses != null && position < courses.size()) {
             Course course = courses.get(position);
+
             holder.classNameTextView.setText(course.getName());
             holder.instructorTextView.setText(course.getInstructor());
             holder.timeTextView.setText(course.getTime());
@@ -50,6 +53,12 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             holder.roomTextView.setText(course.getRoomNumber());
             holder.daysOfWeekTextView.setText(course.getDays());
 
+            holder.edit.setOnClickListener(view -> {
+                NavGraphDirections.ActionGlobalAddCourseFragment action = NavGraphDirections.actionGlobalAddCourseFragment();
+                action.setCourseId(course.getId());
+
+                navController.navigate(action);
+            });
             holder.delete.setOnClickListener(view -> {
                 showDeleteConfirmation(course, position);
             });
@@ -71,7 +80,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
     }
 
     private void deleteCourse(int position) {
-        courses.remove(position);
+        viewModel.removeCourse(courses.get(position));
         notifyDataSetChanged();
     }
 
@@ -90,7 +99,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         public TextView roomTextView;
         public TextView daysOfWeekTextView;
 
-        private ImageButton delete;
+        private final ImageButton edit;
+        private final ImageButton delete;
 
         public CourseViewHolder(View itemView) {
             super(itemView);
@@ -102,6 +112,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             roomTextView = itemView.findViewById(R.id.room_input);
             daysOfWeekTextView = itemView.findViewById(R.id.day_of_week_input);
 
+            edit = itemView.findViewById(R.id.edit_button);
             delete = itemView.findViewById(R.id.delete_button);
         }
     }

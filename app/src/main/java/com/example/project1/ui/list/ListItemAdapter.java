@@ -20,6 +20,7 @@ import com.example.project1.ui.list.viewholders.TaskViewHolder;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -46,6 +47,16 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Log.d("ListItemAdapter", "Received list: " + items.toString());
 
             this.itemList = new ArrayList<>(items);
+            itemList.sort(((o1, o2) -> {
+                if (o1.getDue().equals(o2.getDue())) {
+                    return 0;
+                } else if (o1.getDue().before(o2.getDue())) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }));
+
             this.filteredList = new ArrayList<>(items);
             notifyDataSetChanged();
         }

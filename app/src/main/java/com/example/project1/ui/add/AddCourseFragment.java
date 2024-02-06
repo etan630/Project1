@@ -70,6 +70,7 @@ public class AddCourseFragment extends AbstractAddFragment {
                     roomInput.getText().toString(),
                     dayOfWeekInput.getText().toString() // TODO: input for days of week
             );
+
             if (targetCourseId == -1) {
                 viewModel.addCourse(newCourse);
             } else {

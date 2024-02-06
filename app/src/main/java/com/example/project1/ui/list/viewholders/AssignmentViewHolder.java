@@ -26,7 +26,7 @@ public class AssignmentViewHolder extends AbstractListViewHolder {
     public void populateView(ListItem listItem) {
         Assignment assignment = (Assignment) listItem;
 
-        assignCourse.setText(assignment.getAssociatedCourse().getName());
+        assignCourse.setText(viewModel.getCourseById(assignment.getAssociatedCourseId()).getName());
         assignName.setText(assignment.getName());
         assignDue.setText(formatDate(assignment.getDue()));
     }

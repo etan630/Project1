@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public abstract class AbstractListViewHolder extends RecyclerView.ViewHolder {
-    private AbstractAppViewModel viewModel;
+    protected final AbstractAppViewModel viewModel;
     protected ListItem boundItem;
 
     private final DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());

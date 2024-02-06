@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.data.CourseListAdapter;
@@ -31,16 +33,15 @@ public class CoursesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_courses, container, false);
-        viewModel = new ViewModelProvider(getActivity()).get(NoDBAppViewModel.class);
-
+        viewModel = new ViewModelProvider(requireActivity()).get(NoDBAppViewModel.class);
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
 
         coursesRecyclerView = view.findViewById(R.id.courses_recycler_view);
-        courseAdapter = new CourseListAdapter(viewModel, requireContext());
+        courseAdapter = new CourseListAdapter(viewModel, requireContext(), navController);
         coursesRecyclerView.setAdapter(courseAdapter);
 
         viewModel.getCourses().observe(getViewLifecycleOwner(), courseAdapter::setCourses);
 
         return view;
     }
-
 }

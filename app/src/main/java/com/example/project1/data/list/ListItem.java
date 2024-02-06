@@ -1,7 +1,5 @@
 package com.example.project1.data.list;
 
-import com.example.project1.data.Course;
-
 import java.util.Date;
 
 /**
@@ -12,12 +10,12 @@ public abstract class ListItem {
 
     private String name;
     private Date due;
-    private Course associatedCourse;
+    private int courseId = -1; // no associated course
 
-    public ListItem(String name, Date due, Course associatedCourse) {
+    public ListItem(String name, Date due, int courseId) {
         this.name = name;
         this.due = due;
-        this.associatedCourse = associatedCourse;
+        this.courseId = courseId;
     }
 
     public String getName() {
@@ -25,11 +23,11 @@ public abstract class ListItem {
     }
 
     public Date getDue() {
-        return due;
+        return due == null ? new Date() : due;
     }
 
-    public Course getAssociatedCourse() {
-        return associatedCourse;
+    public int getAssociatedCourseId() {
+        return courseId;
     }
 
     public int getId() {
