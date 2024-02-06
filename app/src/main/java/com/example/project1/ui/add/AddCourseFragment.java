@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.ui.add;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 
+import com.example.project1.R;
 import com.example.project1.data.Course;
 import com.example.project1.data.CourseListAdapter;
 

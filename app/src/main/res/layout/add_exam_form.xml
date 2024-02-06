@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".AddExamFragment">
+    tools:context=".ui.add.AddExamFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.ui.add;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 
+import com.example.project1.R;
 import com.example.project1.data.Course;
 import com.example.project1.data.list.Todo;
 import com.example.project1.ui.CourseSpinner;
 
 public class AddTodoFragment extends AbstractAddFragment {
+    private int editId;
+
     private CourseSpinner courseSpinner;
     private EditText nameInput;
 
@@ -31,6 +34,14 @@ public class AddTodoFragment extends AbstractAddFragment {
                 viewModel.getCourses());
 
         this.nameInput = view.findViewById(R.id.text_task_input);
+
+        this.editId = AddTodoFragmentArgs.fromBundle(getArguments()).getTodoId();
+        if (editId != -1) {
+            Todo source = (Todo) viewModel.getListItemById(editId);
+
+            this.courseSpinner.setSelectedCourse(source.getAssociatedCourse());
+            this.nameInput.setText(source.getName());
+        }
     }
 
     @Override
@@ -43,14 +54,19 @@ public class AddTodoFragment extends AbstractAddFragment {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
-            viewModel.addListItem(new Todo(
+
+            Todo newTodo = new Todo(
                     name,
                     selectedCourse
-            ));
+            );
+
+            if (editId != -1) {
+                viewModel.replaceListItemById(editId, newTodo);
+            } else {
+                viewModel.addListItem(newTodo);
+            }
 
             Toast.makeText(requireContext(), "Task added successfully", Toast.LENGTH_SHORT).show();
-
-            Log.d("Navigation", "Navigating to ListFragment");
 
             navController.navigate(R.id.listFragment);
         };

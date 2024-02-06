@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
@@ -17,17 +18,17 @@ import java.util.Locale;
 
 public abstract class AbstractListViewHolder extends RecyclerView.ViewHolder {
     private AbstractAppViewModel viewModel;
-    private ListItem boundItem;
+    protected ListItem boundItem;
 
-    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
 
-    public AbstractListViewHolder(@NonNull View itemView, AbstractAppViewModel viewModel) {
+    public AbstractListViewHolder(@NonNull View itemView, AbstractAppViewModel viewModel, NavController navController) {
         super(itemView);
 
         this.viewModel = viewModel;
 
         ImageButton button = itemView.findViewById(R.id.edit_button);
-        button.setOnClickListener(onEdit());
+        button.setOnClickListener(onEdit(navController));
 
         ImageButton delete = itemView.findViewById(R.id.delete_button);
         delete.setOnClickListener(onDelete());
@@ -45,7 +46,7 @@ public abstract class AbstractListViewHolder extends RecyclerView.ViewHolder {
      */
     public abstract void populateView(ListItem listItem);
 
-    protected View.OnClickListener onEdit() {
+    protected View.OnClickListener onEdit(NavController controller) {
         return null;
     }
 

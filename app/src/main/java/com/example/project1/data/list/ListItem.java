@@ -28,7 +28,7 @@ public abstract class ListItem {
         return due;
     }
 
-    public Course getAssociatedClass() {
+    public Course getAssociatedCourse() {
         return associatedCourse;
     }
 

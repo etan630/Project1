@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,9 +37,10 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         viewModel = new ViewModelProvider(requireActivity()).get(NoDBAppViewModel.class);
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         recyclerView = view.findViewById(R.id.lv_list);
-        listItemAdapter = new ListItemAdapter(viewModel);
+        listItemAdapter = new ListItemAdapter(viewModel, navController);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);

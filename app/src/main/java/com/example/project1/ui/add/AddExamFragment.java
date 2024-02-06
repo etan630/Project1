@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.ui.add;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 
+import com.example.project1.R;
 import com.example.project1.data.Course;
 import com.example.project1.data.list.Exam;
 import com.example.project1.ui.CourseSpinner;
@@ -17,6 +18,8 @@ import com.example.project1.ui.CourseSpinner;
 import java.util.Date;
 
 public class AddExamFragment extends AbstractAddFragment {
+    private int editId;
+
     private CourseSpinner courseSpinner;
     private EditText nameInput, dateInput, timeInput, locInput;
 
@@ -36,6 +39,16 @@ public class AddExamFragment extends AbstractAddFragment {
         this.dateInput = view.findViewById(R.id.exam_date_input);
         this.timeInput = view.findViewById(R.id.exam_time);
         this.locInput = view.findViewById(R.id.exam_location_input);
+
+        this.editId = AddExamFragmentArgs.fromBundle(getArguments()).getExamId();
+        if (editId != -1) {
+            Exam source = (Exam) viewModel.getListItemById(editId);
+
+            this.courseSpinner.setSelectedCourse(source.getAssociatedCourse());
+            this.nameInput.setText(source.getName());
+            this.timeInput.setText(source.getTime());
+            this.locInput.setText(source.getLocation());
+        }
     }
 
     @Override
@@ -58,17 +71,22 @@ public class AddExamFragment extends AbstractAddFragment {
                 return;
             }
 
-            viewModel.addListItem(new Exam(
+            Exam newExam = new Exam(
                     name,
                     date,
                     time,
                     selectedCourse,
                     location
-            ));
+            );
+
+            if (editId == -1) {
+                viewModel.replaceListItemById(editId, newExam);
+            } else {
+                viewModel.addListItem(newExam);
+            }
 
             Toast.makeText(requireContext(), "Exam added successfully", Toast.LENGTH_SHORT).show();
 
-            Log.d("Navigation", "Navigating to ListFragment");
             navController.navigate(R.id.listFragment);
         };
     }

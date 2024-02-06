@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.ui.add;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.project1.R;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 import com.example.project1.viewmodel.NoDBAppViewModel;
 
@@ -19,6 +20,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * A screen with a back button, an "add" button, and a placeholder for custom
@@ -26,7 +28,7 @@ import java.util.Date;
  */
 public abstract class AbstractAddFragment extends Fragment {
     protected AbstractAppViewModel viewModel;
-    private DateFormat dateFormat = new SimpleDateFormat("MM/DD/YYYY");
+    protected final DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
 
     /**
      * Gets the id of the View (typically a form with text inputs) to be inserted into this add
@@ -50,7 +52,7 @@ public abstract class AbstractAddFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(getActivity()).get(NoDBAppViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(NoDBAppViewModel.class);
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_dialogue, container, false);

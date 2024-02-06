@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
@@ -22,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private final AbstractAppViewModel viewModel;
+    private final NavController navController;
+
 
     private static final int VIEW_TYPE_1 = 1;
     private static final int VIEW_TYPE_2 = 2;
@@ -29,10 +33,11 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private List<ListItem> itemList;
     private List<ListItem> filteredList;
-    private AbstractAppViewModel viewModel;
 
-    public ListItemAdapter(AbstractAppViewModel viewModel) {
+    public ListItemAdapter(AbstractAppViewModel viewModel, NavController navController) {
         this.viewModel = viewModel;
+        this.navController = navController;
+
         this.filteredList = new ArrayList<>();
     }
 
@@ -76,17 +81,17 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (viewType) {
             case VIEW_TYPE_1:
                 View v_exam = inflater.inflate(R.layout.list_exam, parent, false);
-                viewHolder = new ExamViewHolder(v_exam, viewModel);
+                viewHolder = new ExamViewHolder(v_exam, viewModel, navController);
                 break;
 
             case VIEW_TYPE_2:
                 View v_task = inflater.inflate(R.layout.list_task, parent, false);
-                viewHolder = new TaskViewHolder(v_task, viewModel);
+                viewHolder = new TaskViewHolder(v_task, viewModel, navController);
                 break;
 
             case VIEW_TYPE_3:
                 View v_assign = inflater.inflate(R.layout.list_assignment, parent, false);
-                viewHolder = new AssignmentViewHolder(v_assign, viewModel);
+                viewHolder = new AssignmentViewHolder(v_assign, viewModel, navController);
                 break;
 
             default:
