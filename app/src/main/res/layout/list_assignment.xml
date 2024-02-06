@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:baselineAligned="false"
-    android:background="@color/cardBackground"
+    android:backgroundTint="@color/cardBackground"
+    android:background="@drawable/round"
     android:padding="12dp">
 
     <com.google.android.material.checkbox.MaterialCheckBox
