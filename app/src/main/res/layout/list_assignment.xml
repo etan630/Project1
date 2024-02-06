@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:baselineAligned="false"
+    android:background="@color/cardBackground"
+    android:padding="12dp">
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/completed"
+        android:layout_width="22dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.05"
+        android:minWidth="0dp"
+        app:buttonTint="@color/checkbox" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/assign_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/course_dis" />
+
+        <TextView
+            android:id="@+id/assign_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/assignment_disp" />
+
+        <TextView
+            android:id="@+id/assign_due"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/due_date_disp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/edit"
+            android:background="@color/cardBackground"
+            android:layout_marginRight="15dp"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/delete"
+            android:background="@color/cardBackground"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@android:drawable/ic_menu_delete" />
+    </LinearLayout>
+
+</LinearLayout>

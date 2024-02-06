@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/coursesFragment">
+
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.example.project1.CoursesFragment"
+        android:label="CoursesFragment"
+        tools:layout="@layout/fragment_courses">
+        <action
+            android:id="@+id/action_coursesFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.project1.ui.list.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_coursesFragment"
+            app:destination="@id/coursesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAssignmentFragment"
+        android:name="com.example.project1.ui.add.AddAssignmentFragment"
+        android:label="AddAssignmentFragment">
+        <argument
+            android:name="assignmentId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_addAssignmentFragment"
+        app:destination="@id/addAssignmentFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
+
+    <fragment
+        android:id="@+id/addCourseFragment"
+        android:name="com.example.project1.ui.add.AddCourseFragment"
+        android:label="AddCourseFragment">
+        <argument
+            android:name="courseId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_addCourseFragment"
+        app:destination="@id/addCourseFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
+
+    <fragment
+        android:id="@+id/addExamFragment"
+        android:name="com.example.project1.ui.add.AddExamFragment"
+        android:label="addExamFragment">
+        <argument
+            android:name="examId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_addExamFragment"
+        app:destination="@id/addExamFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
+
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.example.project1.ui.add.AddTodoFragment"
+        android:label="AddTodoFragment">
+        <argument
+            android:name="todoId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_addTodoFragment"
+        app:destination="@id/addTodoFragment"
+        app:enterAnim="@android:anim/slide_in_left" />
+</navigation>

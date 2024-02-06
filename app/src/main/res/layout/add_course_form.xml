@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/class_name_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:autofillHints="@string/class_name"
+        android:ems="10"
+        android:hint="@string/class_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/instructor_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:autofillHints="@string/instructor_input"
+        android:ems="10"
+        android:hint="@string/instructor_input"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/day_of_week_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:autofillHints="Days of Week"
+        android:ems="10"
+        android:hint="Days of Week"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/time_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:autofillHints="@string/time_class_input"
+        android:ems="10"
+        android:hint="@string/time_class_input"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/section_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Section" />
+
+    <EditText
+        android:id="@+id/building_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Building" />
+
+    <EditText
+        android:id="@+id/room_input"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Room" />
+
+</LinearLayout>
