@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">project1</string>
+    <string name="app_name">Scheduler</string>
 
     <!-- list fragment titles -->
     <string name="to_do">To-Do</string>

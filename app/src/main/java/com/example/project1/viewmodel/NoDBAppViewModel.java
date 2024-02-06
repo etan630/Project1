@@ -105,14 +105,6 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
         listItem.setId(id);
         numUniqueListItems++;
 
-        List<ListItem> currentList = list.getValue();
-
-        if (currentList != null) {
-            currentList.add(listItem);
-            list.postValue(currentList);
-
-            Log.d("ViewModel", "List contents: " + currentList.toString());
-        }
         return id;
     }
 
@@ -180,6 +172,4 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
 
         liveData.postValue(list);
     }
-
-
 }

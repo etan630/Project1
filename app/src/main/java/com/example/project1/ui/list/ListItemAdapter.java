@@ -9,10 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
-import com.example.project1.data.list.Assignment;
 import com.example.project1.data.list.Exam;
 import com.example.project1.data.list.ListItem;
 import com.example.project1.data.list.Todo;
+import com.example.project1.ui.list.viewholders.AbstractListViewHolder;
+import com.example.project1.ui.list.viewholders.AssignmentViewHolder;
+import com.example.project1.ui.list.viewholders.ExamViewHolder;
+import com.example.project1.ui.list.viewholders.TaskViewHolder;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 
 import java.util.ArrayList;
@@ -68,22 +71,22 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        RecyclerView.ViewHolder viewHolder;
+        AbstractListViewHolder viewHolder;
 
         switch (viewType) {
             case VIEW_TYPE_1:
-                View v_exam = inflater.inflate(R.layout.fragment_exam, parent, false);
-                viewHolder = new ExamViewHolder(v_exam);
+                View v_exam = inflater.inflate(R.layout.list_exam, parent, false);
+                viewHolder = new ExamViewHolder(v_exam, viewModel);
                 break;
 
             case VIEW_TYPE_2:
-                View v_task = inflater.inflate(R.layout.fragment_task, parent, false);
-                viewHolder = new TaskViewHolder(v_task);
+                View v_task = inflater.inflate(R.layout.list_task, parent, false);
+                viewHolder = new TaskViewHolder(v_task, viewModel);
                 break;
 
             case VIEW_TYPE_3:
-                View v_assign = inflater.inflate(R.layout.fragment_assignment, parent, false);
-                viewHolder = new AssignmentViewHolder(v_assign);
+                View v_assign = inflater.inflate(R.layout.list_assignment, parent, false);
+                viewHolder = new AssignmentViewHolder(v_assign, viewModel);
                 break;
 
             default:
@@ -95,25 +98,11 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        AbstractListViewHolder listViewHolder = (AbstractListViewHolder) holder;
+
         ListItem item = itemList.get(position);
 
-        switch (holder.getItemViewType()) {
-            case VIEW_TYPE_1:
-                ((ExamViewHolder) holder).bindExam((Exam) item);
-                break;
-
-            case VIEW_TYPE_2:
-                ((TaskViewHolder) holder).bindTask((Todo) item);
-                break;
-
-            case VIEW_TYPE_3:
-                ((AssignmentViewHolder) holder).bindAssignment((Assignment) item);
-                break;
-
-            default:
-                throw new IllegalArgumentException("Invalid view type");
-        }
-        Log.d("ListItemAdapter", "Bound item at position " + position + ": " + item.toString());
+        listViewHolder.bindTo(item);
     }
 
 //    public void filterByCourse(String courseName) {
