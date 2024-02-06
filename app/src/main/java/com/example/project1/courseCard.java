@@ -57,6 +57,9 @@ public class courseCard extends Fragment {
                 coursesAdapter.setCourses(courses);
             }
         });
+
+
+
         return view;
     }
 }

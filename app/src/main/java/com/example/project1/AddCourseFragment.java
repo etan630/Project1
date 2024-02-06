@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 
 import com.example.project1.data.Course;
+import com.example.project1.data.CourseListAdapter;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class AddCourseFragment extends AbstractAddFragment {
     private EditText sectionInput;
     private EditText buildingInput;
     private EditText roomInput;
+    private CourseListAdapter courseListAdapter;
 
     @Override
     protected int getFormContent() {
@@ -64,7 +66,6 @@ public class AddCourseFragment extends AbstractAddFragment {
                     roomInput.getText().toString(),
                     new ArrayList<>() // TODO: input for days of week
             );
-
             if (targetCourseId == -1) {
                 viewModel.addCourse(newCourse);
             } else {

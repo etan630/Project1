@@ -3,6 +3,8 @@ package com.example.project1.data;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,11 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         holder.sectionTextView.setText(course.getSection());
         holder.buildingTextView.setText(course.getLocation());
         holder.roomTextView.setText(course.getRoomNumber());
+
+        holder.delete.setOnClickListener(view -> {
+            courses.remove(position);
+            notifyDataSetChanged();
+        });
     }
 
     public void setCourses(List<Course> courses) {
@@ -57,6 +64,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         public TextView buildingTextView;
         public TextView roomTextView;
 
+        private ImageButton delete;
+
         public CourseViewHolder(View itemView) {
             super(itemView);
             classNameTextView = itemView.findViewById(R.id.class_name_input);
@@ -65,6 +74,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             sectionTextView = itemView.findViewById(R.id.section_input);
             buildingTextView = itemView.findViewById(R.id.building_input);
             roomTextView = itemView.findViewById(R.id.room_input);
+
+            delete = itemView.findViewById(R.id.delete_button);
+
+
         }
     }
 }
