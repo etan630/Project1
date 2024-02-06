@@ -42,17 +42,17 @@ public class NoDBAppViewModel extends AbstractAppViewModel {
     }
 
     public void initWithDummyData() {
-        Course math = new Course("math", "now", "monday", "pedro", "z", "gt", "404");
+        Course math = new Course("CS 2340", "12:30", "Prof Pedro", "C", "Instructional Center", "135", "Tuesday Thursday");
         addCourse(math);
 
         // Adding an exam
-        addListItem(new Exam("Math Exam", new Date(), "10:00 AM", math.getId(), "Exam Hall"));
+        addListItem(new Exam("3510 Exam", new Date(), "9:30 AM", math.getId(), "Instructional Center 135"));
 
         // Adding a todo
-        addListItem(new Todo("Complete Homework", math.getId()));
+        addListItem(new Todo("Finish and Refine Website", math.getId()));
 
         // Adding an assignment
-        addListItem(new Assignment("Programming Assignment", new Date(), math.getId()));
+        addListItem(new Assignment("Course/ToDo App", new Date(), math.getId()));
 
         logListData();
     }
