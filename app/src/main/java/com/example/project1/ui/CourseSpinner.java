@@ -60,4 +60,8 @@ public class CourseSpinner { // most smelly class award
             spinner.setSelection(courses.getValue().indexOf(course) + 1);
         }
     }
+
+    public Spinner getSpinner() {
+        return spinner;
+    }
 }

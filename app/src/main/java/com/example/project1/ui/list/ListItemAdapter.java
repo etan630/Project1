@@ -10,8 +10,6 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
-import com.example.project1.data.Course;
-import com.example.project1.data.list.Assignment;
 import com.example.project1.data.list.Exam;
 import com.example.project1.data.list.ListItem;
 import com.example.project1.data.list.Todo;
@@ -22,7 +20,6 @@ import com.example.project1.ui.list.viewholders.TaskViewHolder;
 import com.example.project1.viewmodel.AbstractAppViewModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -35,13 +32,10 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int VIEW_TYPE_3 = 3;
 
     private List<ListItem> itemList;
-    private List<ListItem> filteredList;
 
     public ListItemAdapter(AbstractAppViewModel viewModel, NavController navController) {
         this.viewModel = viewModel;
         this.navController = navController;
-
-        this.filteredList = new ArrayList<>();
     }
 
     public void setList(List<ListItem> items) {
@@ -59,7 +53,6 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }));
 
-            this.filteredList = new ArrayList<>(items);
             notifyDataSetChanged();
         }
     }
@@ -122,68 +115,4 @@ public class ListItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         listViewHolder.bindTo(item);
     }
-
-//    public void filterByCourse(String courseName) {
-//        filteredList.clear();
-//
-//        for (ListItem item : itemList) {
-//            if (item instanceof Assignment || item instanceof Exam) {
-//                Course associatedCourse = item.getAssociatedCourse();
-//                if (associatedCourse != null && associatedCourse.getName().equalsIgnoreCase(courseName)) {
-//                    filteredList.add(item);
-//                }
-//            }
-//        }
-//
-//        notifyDataSetChanged();
-//    }
-//
-//    public void filterByAssignment() {
-//        filteredList.clear();
-//
-//        for (ListItem item : itemList) {
-//            if (item instanceof Assignment) {
-//                filteredList.add(item);
-//            }
-//        }
-//
-//        notifyDataSetChanged();
-//    }
-//
-//    public void filterByTask() {
-//        filteredList.clear();
-//
-//        for (ListItem item : itemList) {
-//            if (item instanceof Todo) {
-//                filteredList.add(item);
-//            }
-//        }
-//
-//        notifyDataSetChanged();
-//    }
-//
-//    public void filterByExams() {
-//        filteredList.clear();
-//
-//        for (ListItem item : itemList) {
-//            if (item instanceof Exam) {
-//                filteredList.add(item);
-//            }
-//        }
-//
-//        notifyDataSetChanged();
-//    }
-//
-//
-//    public void filterByDueDate(Date dueDate) {
-//        filteredList.clear();
-//
-//        for (ListItem item : itemList) {
-//            if (item instanceof Assignment && ((Assignment) item).getDue().equals(dueDate)) {
-//                filteredList.add(item);
-//            }
-//        }
-//
-//        notifyDataSetChanged();
-//    }
 }

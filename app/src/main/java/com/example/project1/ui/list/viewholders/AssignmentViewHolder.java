@@ -10,9 +10,12 @@ import com.example.project1.R;
 import com.example.project1.data.list.Assignment;
 import com.example.project1.data.list.ListItem;
 import com.example.project1.viewmodel.AbstractAppViewModel;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 public class AssignmentViewHolder extends AbstractListViewHolder {
     private final TextView assignCourse, assignName, assignDue;
+    private final MaterialCheckBox completedInput;
+
 
     public AssignmentViewHolder(View itemView, AbstractAppViewModel viewModel, NavController navController) {
         super(itemView, viewModel, navController);
@@ -20,6 +23,14 @@ public class AssignmentViewHolder extends AbstractListViewHolder {
         assignCourse = itemView.findViewById(R.id.assign_course);
         assignName = itemView.findViewById(R.id.assign_name);
         assignDue = itemView.findViewById(R.id.assign_due);
+
+        completedInput = itemView.findViewById(R.id.completed);
+        completedInput.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked != boundItem.isComplete()) {
+                boundItem.setComplete(isChecked);
+                viewModel.getList().postValue(viewModel.getList().getValue()); // force refresh
+            }
+        });
     }
 
     @Override

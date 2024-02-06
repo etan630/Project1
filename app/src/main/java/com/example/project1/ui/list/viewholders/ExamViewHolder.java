@@ -1,6 +1,7 @@
 package com.example.project1.ui.list.viewholders;
 
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.navigation.NavController;
@@ -11,6 +12,7 @@ import com.example.project1.data.list.Exam;
 import com.example.project1.data.list.ListItem;
 import com.example.project1.ui.add.AddExamFragmentDirections;
 import com.example.project1.viewmodel.AbstractAppViewModel;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 public class ExamViewHolder extends AbstractListViewHolder {
     private final TextView examNameDisplay, examDateDisplay, examTimeDisplay, examLocationDisplay;

@@ -8,6 +8,8 @@ import java.util.Date;
 public abstract class ListItem {
     private int id;
 
+    private boolean complete = false;
+
     private String name;
     private Date due;
     private int courseId = -1; // no associated course
@@ -23,7 +25,7 @@ public abstract class ListItem {
     }
 
     public Date getDue() {
-        return due == null ? new Date() : due;
+        return due;
     }
 
     public int getAssociatedCourseId() {
@@ -36,5 +38,13 @@ public abstract class ListItem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 }
