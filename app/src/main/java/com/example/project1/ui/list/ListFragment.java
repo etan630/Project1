@@ -1,12 +1,8 @@
-package com.example.project1;
+package com.example.project1.ui.list;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,10 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project1.data.CourseListAdapter;
+import com.example.project1.R;
 import com.example.project1.data.list.ListItem;
-import com.example.project1.data.list.ListItemAdapter;
-import com.example.project1.viewmodel.AbstractAppViewModel;
 import com.example.project1.viewmodel.NoDBAppViewModel;
 
 import java.util.List;
@@ -36,7 +30,6 @@ public class ListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -45,7 +38,6 @@ public class ListFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.lv_list);
         listItemAdapter = new ListItemAdapter(viewModel);
-        //recyclerView.setAdapter(listItemAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
